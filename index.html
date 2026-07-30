@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pedro Peixoto | Desenvolvedor de IA & Automação</title>
+  <meta name="description" content="Portfólio Profissional de Pedro Peixoto. Bacharel em Direito e Desenvolvedor focado em IA, automações n8n, RPA, aplicações web e Inteligência de Dados.">
+  
+  <!-- OpenGraph Meta Tags -->
+  <meta property="og:title" content="Pedro Peixoto | Desenvolvedor de IA & Automação">
+  <meta property="og:description" content="Especialista em automação de processos, integração de LLMs, n8n, RPA e desenvolvimento web.">
+  <meta property="og:type" content="website">
+
+  <!-- Google Fonts: Inter (Medium 500 & SemiBold 600) + JetBrains Mono (Mono Details) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Inter"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            paper: '#FAF9F6',
+            ink: '#121212',
+            subtle: '#555555',
+            muted: '#666666',
+            borderSubtle: '#E4E4E7',
+            bgSubtle: '#F4F4F5',
+          }
+        }
+      }
+    }
+  </script>
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="bg-[#FAF9F6] text-[#121212] font-sans antialiased selection:bg-[#121212] selection:text-white min-h-screen flex flex-col relative">
+
+  <!-- Acessibilidade: Skip to Content -->
+  <a href="#main-content" class="sr-only focus:not-sr-only bg-[#121212] text-white font-medium text-xs rounded-sm shadow-xl transition-all" data-i18n="skip_to_content">
+    Pular para o conteúdo
+  </a>
+
+  <!-- 1. Header Minimalista Centralizado -->
+  <header class="sticky top-0 z-50 header-swiss px-6 lg:px-12 py-4 transition-all">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-center">
+      
+      <!-- Branding -->
+      <a href="#hero" class="brand-name hover:opacity-80 transition-opacity">
+        Pedro Peixoto
+      </a>
+
+      <span class="hidden sm:inline-block text-[#D4D4D8] font-light">|</span>
+
+      <!-- Navegação Focada: Sobre, Trabalhos, Contato -->
+      <nav aria-label="Primary" class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 text-[13.5px]">
+        <a href="#about" class="nav-link-swiss" data-i18n="nav_about">Sobre</a>
+        <a href="#work" class="nav-link-swiss" data-i18n="nav_work">Trabalhos</a>
+        <a href="#contact" class="nav-link-swiss" data-i18n="nav_contact">Contato</a>
+      </nav>
+
+      <span class="hidden sm:inline-block text-[#D4D4D8] font-light">|</span>
+
+      <!-- Seletor de Idioma (PT / EN) -->
+      <button 
+        type="button" 
+        class="lang-toggle-btn font-sans flex items-center gap-1.5 text-[13px] text-[#666666] hover:text-[#111111] transition-colors cursor-pointer"
+        title="Alternar idioma / Toggle language"
+      >
+        <span class="lang-pt font-semibold text-[#121212]">PT</span>
+        <span class="text-[#D4D4D8]">/</span>
+        <span class="lang-en text-[#666666]">EN</span>
+      </button>
+
+    </div>
+  </header>
+
+  <!-- Conteúdo Principal -->
+  <main id="main-content" class="flex-1">
+
+    <!-- 2. Hero Section Minimalista (100vh de altura no carregamento) -->
+    <section id="hero" class="min-h-[calc(100vh-70px)] flex flex-col justify-between pt-12 pb-0 border-b border-[#E4E4E7]">
+      <div class="my-auto px-6 lg:px-12">
+        <div class="max-w-4xl mx-auto space-y-9 text-left">
+          
+          <!-- Título Principal com Inter Medium (500) & letter-spacing: -0.02em -->
+          <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.375rem] font-medium text-[#121212] leading-[1.1] tracking-[-0.02em]" data-i18n="hero_h1">
+            Pedro Peixoto é Desenvolvedor de IA & Automação na HCLB Advogados
+          </h1>
+
+          <!-- Subtítulo (Corpo) -->
+          <p class="text-base sm:text-[1.0625rem] text-[#555555] leading-[1.6] max-w-2xl font-normal" data-i18n="hero_p">
+            Bacharel em Direito e desenvolvedor, focado na construção de aplicações web, automações no n8n e agentes de IA integrados a bancos de dados e LLMs. Histórico de redução de tempo operacional em 90% e 70% na perda de prazos.
+          </p>
+
+          <!-- Botões de Ação Minimalistas -->
+          <div class="flex flex-wrap items-center gap-3.5 pt-2">
+            <a href="#work" class="btn-swiss-primary px-5 py-3 flex items-center gap-2">
+              <span data-i18n="hero_cta_work">Ver trabalhos</span>
+              <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+            </a>
+
+            <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-[#555555]"></i>
+              <span data-i18n="hero_cta_cv">Currículo (PDF)</span>
+            </a>
+
+            <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
+              <i data-lucide="linkedin" class="w-3.5 h-3.5 text-[#555555]"></i>
+              <span data-i18n="hero_cta_resume">Perfil LinkedIn</span>
+            </a>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- FAIXA DIVISORA DE PONTA A PONTA COM LOGOS (FULL-BLEED BANNER) -->
+      <div class="w-full border-t border-[#E4E4E7] bg-white py-6 px-6 lg:px-12 mt-12">
+        <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-8 md:gap-12 opacity-85 hover:opacity-100 transition-opacity duration-300">
+          
+          <!-- HCLB Advogados Logo Oficial SVG -->
+          <div class="flex items-center">
+            <img src="hclb-logo.svg" alt="HCLB Advogados" class="h-9 sm:h-10 w-auto object-contain">
+          </div>
+
+          <!-- Singular Facilities -->
+          <div class="flex items-center gap-2 text-xs font-mono font-semibold text-[#121212] tracking-wider uppercase">
+            <i data-lucide="layers" class="w-4 h-4 text-[#555555]"></i>
+            <span>Singular Facilities</span>
+          </div>
+
+          <!-- R. Amaral Advogados -->
+          <div class="flex items-center gap-2 text-xs font-mono font-semibold text-[#121212] tracking-wider uppercase">
+            <i data-lucide="scale" class="w-4 h-4 text-[#555555]"></i>
+            <span>R. Amaral Advogados</span>
+          </div>
+
+          <!-- UNIFOR Logo Oficial SVG -->
+          <div class="flex items-center">
+            <img src="unifor-logo.svg" alt="Universidade de Fortaleza (UNIFOR)" class="h-6 sm:h-7 w-auto object-contain">
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Seção "Sobre Mim" -->
+    <section id="about" class="py-28 lg:py-36 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-4 text-left">
+        
+        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block" data-i18n="about_label">
+          SOBRE MIM
+        </span>
+
+        <h2 class="font-sans text-3xl lg:text-[2.25rem] font-semibold text-[#121212] leading-[1.2] max-w-3xl tracking-[-0.02em]" data-i18n="about_title">
+          Conectando o Direito à Tecnologia com Inteligência Artificial e Automação de Alta Performance
+        </h2>
+
+        <p class="text-base sm:text-[1.0625rem] text-[#555555] leading-[1.6] max-w-3xl pt-2 font-normal" data-i18n="about_p">
+          Atuo no desenvolvimento de soluções tecnológicas estratégicas para o setor jurídico e empresarial. Minha abordagem une a visão analítica do Direito com a eficiência de workflows orquestrados no n8n, agentes de inteligência artificial generativa e inteligência de dados (Power BI e SQL). Construo ferramentas focadas em resolver gargalos operacionais reais e eliminar tarefas repetitivas.
+        </p>
+
+      </div>
+    </section>
+
+    <!-- 4. Seção de Projetos / Cases (Foco Principal do Portfólio) -->
+    <section id="work" class="py-28 lg:py-36 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-12 text-left">
+        
+        <div class="space-y-3">
+          <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block" data-i18n="work_label">
+            PROJETOS SELECIONADOS
+          </span>
+          <h2 class="font-sans text-3xl lg:text-[2.25rem] font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="work_title">
+            Cases & Aplicações em Destaque
+          </h2>
+          <p class="text-base text-[#555555] max-w-xl font-normal leading-[1.6]" data-i18n="work_subtitle">
+            Resumos de projetos desenvolvidos. Clique nos botões de ação para acessar o código ou material completo.
+          </p>
+        </div>
+
+        <!-- Filtros por Categoria -->
+        <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
+          <button 
+            type="button" 
+            data-category="all"
+            class="category-filter-btn px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-[#121212] text-white transition-all cursor-pointer"
+            data-i18n="filter_all"
+          >
+            Todos
+          </button>
+          <button 
+            type="button" 
+            data-category="ai"
+            class="category-filter-btn px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-white text-[#555555] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
+            data-i18n="filter_ai"
+          >
+            IA & LLMs
+          </button>
+          <button 
+            type="button" 
+            data-category="n8n"
+            class="category-filter-btn px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-white text-[#555555] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
+            data-i18n="filter_n8n"
+          >
+            Automação n8n
+          </button>
+          <button 
+            type="button" 
+            data-category="web"
+            class="category-filter-btn px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-white text-[#555555] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
+            data-i18n="filter_web"
+          >
+            Desenvolvimento Web
+          </button>
+        </div>
+
+        <!-- Cards Empilhados Verticalmente -->
+        <div class="space-y-9 pt-2">
+          
+          <!-- Card 1: Gerenciador de Links TRT (Projeto Pessoal) -->
+          <div class="project-case-card card-swiss p-8 lg:p-10" data-categories="web">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div class="lg:col-span-7 space-y-4">
+                <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_1_role">
+                  Projeto Pessoal • Desenvolvedor Web
+                </span>
+
+                <h3 class="font-sans text-xl lg:text-2xl font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="case_1_h3">
+                  Gerenciador de Links TRT & Autenticação A1 OTP
+                </h3>
+
+                <p class="text-base text-[#555555] leading-[1.6] font-normal" data-i18n="case_1_p">
+                  Desenvolvimento de uma aplicação web em Next.js para centralização e acesso rápido aos 24 Tribunais Regionais do Trabalho (TRT 1 ao 24 e TST). Integração de gerador de tokens TOTP/2FA em tempo real (RFC 6238) para autenticação segura com Certificados Digitais A1.
+                </p>
+
+                <!-- Tool Badges -->
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="badge-swiss px-2.5 py-0.5">Next.js</span>
+                  <span class="badge-swiss px-2.5 py-0.5">JavaScript</span>
+                  <span class="badge-swiss px-2.5 py-0.5">TOTP (RFC 6238)</span>
+                  <span class="badge-swiss px-2.5 py-0.5">Tailwind CSS</span>
+                </div>
+
+                <div class="pt-3">
+                  <a href="https://github.com/pedronmpeixoto/gerenciador" target="_blank" rel="noopener noreferrer" class="btn-swiss-primary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
+                    <span data-i18n="case_1_action">Ver no GitHub</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Preview Frame -->
+              <div class="lg:col-span-5 flex justify-center">
+                <div class="w-full h-44 rounded-sm bg-[#FAF9F6] border border-[#E4E4E7] flex items-center justify-center p-6 text-center">
+                  <div class="space-y-2">
+                    <i data-lucide="shield-check" class="w-7 h-7 text-[#121212] mx-auto"></i>
+                    <span class="text-xs font-mono text-[#121212] block font-medium">TRT Portal & OTP 2FA</span>
+                    <span class="text-[11px] text-[#666666] font-mono">24 Tribunais + TST</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Card 2: Automação de Diários (HCLB Advogados) -->
+          <div class="project-case-card card-swiss p-8 lg:p-10" data-categories="n8n">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div class="lg:col-span-7 space-y-4">
+                <span class="badge-swiss px-3 py-1.5 inline-flex items-center gap-2" data-i18n="case_2_role">
+                  <img src="hclb-logo.svg" alt="HCLB Advogados" class="h-3.5 w-auto object-contain">
+                  HCLB Advogados • Desenvolvedor de IA & Automação
+                </span>
+
+                <h3 class="font-sans text-xl lg:text-2xl font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="case_2_h3">
+                  Automação de Diários da Justiça & Cruzamento ERP
+                </h3>
+
+                <p class="text-base text-[#555555] leading-[1.6] font-normal" data-i18n="case_2_p">
+                  Criação de workflow orquestrado no n8n para captura diária automatizada de diários unificados da Justiça, sincronização de dados entre ERP e banco PostgreSQL (Supabase), reduzindo em 90% o tempo da rotina operacional.
+                </p>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="badge-swiss px-2.5 py-0.5">n8n</span>
+                  <span class="badge-swiss px-2.5 py-0.5">Supabase</span>
+                  <span class="badge-swiss px-2.5 py-0.5">PostgreSQL</span>
+                  <span class="badge-swiss px-2.5 py-0.5">APIs REST</span>
+                </div>
+
+                <div class="pt-3">
+                  <span class="btn-swiss-secondary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
+                    <span data-i18n="case_2_action">Ver Case em Produção</span>
+                    <i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-[#121212]"></i>
+                  </span>
+                </div>
+              </div>
+
+              <!-- Preview Frame -->
+              <div class="lg:col-span-5 flex justify-center">
+                <div class="w-full h-44 rounded-sm bg-[#FAF9F6] border border-[#E4E4E7] flex items-center justify-center p-6 text-center">
+                  <div class="space-y-2">
+                    <i data-lucide="workflow" class="w-7 h-7 text-[#121212] mx-auto"></i>
+                    <span class="text-xs font-mono text-[#121212] block font-medium">Workflow n8n Orchestrator</span>
+                    <span class="text-[11px] text-[#121212] font-mono font-medium">-90% Tempo Operacional</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Card 3: Agentes de IA (HCLB Advogados) -->
+          <div class="project-case-card card-swiss p-8 lg:p-10" data-categories="ai">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              
+              <div class="lg:col-span-7 space-y-4">
+                <span class="badge-swiss px-3 py-1.5 inline-flex items-center gap-2" data-i18n="case_3_role">
+                  <img src="hclb-logo.svg" alt="HCLB Advogados" class="h-3.5 w-auto object-contain">
+                  HCLB Advogados • Desenvolvedor de IA & Automação
+                </span>
+
+                <h3 class="font-sans text-xl lg:text-2xl font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="case_3_h3">
+                  Agentes de IA para Minuta de Contratos & Peças
+                </h3>
+
+                <p class="text-base text-[#555555] leading-[1.6] font-normal" data-i18n="case_3_p">
+                  Desenvolvimento de Agentes de Inteligência Artificial para geração e validação automatizada de minutas contratuais padronizadas, reduzindo drasticamente custos de assinaturas com provedores de LLMs.
+                </p>
+
+                <div class="flex flex-wrap gap-2 pt-1">
+                  <span class="badge-swiss px-2.5 py-0.5">Google AI Studio</span>
+                  <span class="badge-swiss px-2.5 py-0.5">Claude Code</span>
+                  <span class="badge-swiss px-2.5 py-0.5">Python</span>
+                  <span class="badge-swiss px-2.5 py-0.5">Prompt Engineering</span>
+                </div>
+
+                <div class="pt-3">
+                  <a href="mailto:pedroiran1996@gmail.com?subject=Solicita%C3%A7%C3%A3o%20de%20Acesso%20-%20Agente%20de%20IA&body=Ol%C3%A1%20Pedro,%20gostaria%20de%20saber%20mais%20sobre%20o%20case%20de%20Agentes%20de%20IA." class="btn-swiss-secondary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
+                    <span data-i18n="case_3_action">Solicitar Acesso</span>
+                    <i data-lucide="mail" class="w-3.5 h-3.5 text-[#555555]"></i>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Preview Frame -->
+              <div class="lg:col-span-5 flex justify-center">
+                <div class="w-full h-44 rounded-sm bg-[#FAF9F6] border border-[#E4E4E7] flex items-center justify-center p-6 text-center">
+                  <div class="space-y-2">
+                    <i data-lucide="bot" class="w-7 h-7 text-[#121212] mx-auto"></i>
+                    <span class="text-xs font-mono text-[#121212] block font-medium">AI Agent & LLM Pipeline</span>
+                    <span class="text-[11px] text-[#666666] font-mono">Minuta Automatizada de Contratos</span>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+    <!-- 5. Seção de Contato -->
+    <section id="contact" class="py-28 lg:py-36 px-6 lg:px-12">
+      <div class="max-w-4xl mx-auto space-y-8 text-left">
+        
+        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block" data-i18n="contact_label">
+          CONTATO
+        </span>
+
+        <h2 class="font-sans text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#121212] tracking-[-0.02em] max-w-2xl leading-tight" data-i18n="contact_title">
+          Vamos conversar sobre o seu próximo projeto?
+        </h2>
+
+        <!-- Links de Ação Minimalistas -->
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-primary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
+            <span data-i18n="contact_link_cv">Currículo (PDF)</span>
+          </a>
+
+          <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="linkedin" class="w-4 h-4 text-[#555555]"></i>
+            <span data-i18n="contact_link_linkedin">Perfil no LinkedIn</span>
+          </a>
+
+          <a href="https://github.com/pedronmpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="github" class="w-4 h-4 text-[#555555]"></i>
+            <span data-i18n="contact_link_github">Perfil no GitHub</span>
+          </a>
+
+          <a href="mailto:pedroiran1996@gmail.com" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-[#555555]"></i>
+            <span data-i18n="contact_link_email">Enviar E-mail</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Linha Final com Nome e Copyright -->
+  <footer class="py-8 px-6 border-t border-[#E4E4E7] text-xs text-[#666666]">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p id="copyright-year" data-i18n="copyright_text">
+        © 2026 Pedro Peixoto. Todos os direitos reservados.
+      </p>
+      <p class="font-mono text-[#666666]">
+        Pedro Peixoto • Desenvolvedor de IA & Automação
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
