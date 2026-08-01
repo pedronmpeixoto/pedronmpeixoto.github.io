@@ -16,6 +16,7 @@ Este é o repositório do portfólio profissional de **Pedro Peixoto**, publicad
   1. ⚖️ **Gerenciador de Links TRT & Certificado Digital A1 OTP** (Next.js + TOTP 2FA) — [Repositório](https://github.com/pedronmpeixoto/gerenciador)
   2. ⚡ **Automação de Diários da Justiça & Cruzamento ERP** (n8n + Supabase PostgreSQL)
   3. 🤖 **Gerador Inteligente de Contratos & Agentes de IA** (Google AI Studio + Claude Code)
+  4. 📄 **Emissão Automatizada de GRUs Trabalhistas** (Python + Pandas + Banco de Dados + RPA)
 - **Experiência Profissional & Formação**: Linha do tempo interativa destacando histórico de resultados (-90% tempo operacional e -70% perda de prazos).
 - **Design 100% Responsivo**: Otimizado para dispositivos móveis, tablets e telas de alta resolução.
 
