@@ -15,7 +15,7 @@ Este é o repositório do portfólio profissional de **Pedro Peixoto**, publicad
 - **Bilíngue**: alternância PT/EN feita em JavaScript puro, sem dependências.
 - **Projetos em Destaque**:
   1. ⚖️ **Gerenciador de Links TRT & Certificado Digital A1 OTP** (Next.js + TOTP 2FA): [Repositório](https://github.com/pedronmpeixoto/gerenciador)
-  2. ⚡ **Automação de Diários da Justiça & Cruzamento ERP** (n8n + Supabase PostgreSQL): [Case completo](https://pedronmpeixoto.github.io/projetos/kurier-legal-one/), com diagrama interativo
+  2. ⚡ **Automação de Diários da Justiça & Cruzamento ERP** (n8n + Supabase PostgreSQL): [Case completo](https://pedronmpeixoto.github.io/projetos/diarios-djen/), com diagrama interativo
   3. 📄 **Emissão Automatizada de GRUs Trabalhistas** (Python + Pandas + Banco de Dados + RPA)
 - **Design 100% Responsivo**: otimizado para celular, tablet e telas grandes.
 
@@ -28,7 +28,7 @@ pedronmpeixoto.github.io/
 ├── index.html                      # Página principal
 ├── curriculo-pedro-peixoto.pdf     # Currículo (fica na raiz para não quebrar links já compartilhados)
 ├── projetos/
-│   └── kurier-legal-one/
+│   └── diarios-djen/
 │       └── index.html              # Case: Automação de Diários da Justiça & Cruzamento ERP
 ├── assets/
 │   ├── css/
@@ -47,7 +47,7 @@ pedronmpeixoto.github.io/
 
 ### Convenções
 
-- Páginas novas de projeto ficam em `projetos/<nome-do-projeto>/index.html`, o que gera URLs limpas como `/projetos/kurier-legal-one/`.
+- Páginas novas de projeto ficam em `projetos/<nome-do-projeto>/index.html`, o que gera URLs limpas como `/projetos/diarios-djen/`.
 - CSS, JavaScript e imagens ficam em `assets/`, separados por tipo.
 - Textos traduzíveis usam o atributo `data-i18n` e ficam no objeto `translations` de `assets/js/main.js`.
 - Nenhuma credencial, senha ou dado interno do escritório entra no repositório.

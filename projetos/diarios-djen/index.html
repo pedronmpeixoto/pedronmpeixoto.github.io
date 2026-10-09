@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Automação de Diários da Justiça & Cruzamento ERP | Pedro Peixoto</title>
+  <meta name="description" content="Case: workflow no n8n que substituiu a conferência manual das publicações do DJEN com a base do ERP na HCLB Advogados, com demo interativa e uso de IA.">
+
+  <meta property="og:title" content="Automação de Diários da Justiça & Cruzamento ERP | Pedro Peixoto">
+  <meta property="og:description" content="Como uma conferência manual de publicações do DJEN virou um workflow automático no n8n.">
+  <meta property="og:type" content="article">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <script src="../../assets/js/tailwind.config.js"></script>
+
+  <link rel="stylesheet" href="../../assets/css/styles.css">
+  <link rel="stylesheet" href="../../assets/css/case-study.css">
+</head>
+<body class="bg-[#FAF9F6] text-[#121212] font-sans antialiased selection:bg-[#121212] selection:text-white min-h-screen flex flex-col relative">
+
+  <a href="#main-content" class="sr-only focus:not-sr-only bg-[#121212] text-white font-medium text-xs rounded-sm shadow-xl transition-all" data-i18n="skip_to_content">
+    Pular para o conteúdo
+  </a>
+
+  <header class="sticky top-0 z-50 header-swiss px-6 lg:px-12 py-4 transition-all">
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-center">
+      <a href="../../index.html#hero" class="brand-name hover:opacity-80 transition-opacity">
+        Pedro Peixoto
+      </a>
+      <span class="hidden sm:inline-block text-[#D4D4D8] font-light">|</span>
+      <nav aria-label="Primary" class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 text-[13.5px]">
+        <a href="../../index.html#about" class="nav-link-swiss" data-i18n="nav_about">Sobre</a>
+        <a href="../../index.html#work" class="nav-link-swiss" data-i18n="nav_work">Trabalhos</a>
+        <a href="../../index.html#contact" class="nav-link-swiss" data-i18n="nav_contact">Contato</a>
+      </nav>
+      <span class="hidden sm:inline-block text-[#D4D4D8] font-light">|</span>
+      <button type="button" class="lang-toggle-btn font-sans flex items-center gap-1.5 text-[13px] text-[#666666] hover:text-[#111111] transition-colors cursor-pointer" title="Alternar idioma / Toggle language">
+        <span class="lang-pt font-semibold text-[#121212]">PT</span>
+        <span class="text-[#D4D4D8]">/</span>
+        <span class="lang-en text-[#666666]">EN</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content" class="flex-1">
+
+    <section class="pt-16 pb-14 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-7 text-left">
+
+        <a href="../../index.html#work" class="nav-link-swiss inline-flex items-center gap-1.5">
+          <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i>
+          <span>Voltar aos projetos</span>
+        </a>
+
+        <div class="flex items-center gap-2 pt-2">
+          <img src="../../assets/img/hclb-logo.svg" alt="HCLB Advogados" class="h-4 w-auto object-contain">
+          <span class="badge-swiss px-3 py-1.5 inline-block">HCLB Advogados • Desenvolvedor de IA &amp; Automação</span>
+        </div>
+
+        <h1 class="font-sans text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#121212] leading-[1.15] tracking-[-0.02em] max-w-3xl">
+          Automação de Diários da Justiça &amp; Cruzamento ERP
+        </h1>
+
+        <p class="text-base sm:text-[1.0625rem] text-[#555555] leading-[1.6] max-w-2xl">
+          Todo dia o escritório precisa saber quais publicações do DJEN (Diário de Justiça Eletrônico Nacional) envolvem processos que não estão no ERP ou que o ERP não captou. Essa conferência era feita à mão, processo por processo. Com apoio de IA, construí um workflow no n8n que faz o cruzamento sozinho e entrega à equipe só o que precisa de atenção.
+        </p>
+
+        <div class="flex flex-wrap items-center gap-3 pt-1">
+          <a href="demo.html" target="_blank" rel="noopener" class="btn-swiss-primary px-5 py-3 inline-flex items-center gap-2">
+            <i data-lucide="play" class="w-3.5 h-3.5"></i>
+            <span>Abrir demo interativa</span>
+          </a>
+          <a href="#video" class="btn-swiss-secondary px-5 py-3 inline-flex items-center gap-2">
+            <i data-lucide="film" class="w-3.5 h-3.5 text-[#555555]"></i>
+            <span>Ver vídeo (34s)</span>
+          </a>
+        </div>
+
+        <div class="flex flex-wrap gap-2 pt-1">
+          <span class="badge-swiss px-2.5 py-0.5">n8n</span>
+          <span class="badge-swiss px-2.5 py-0.5">Supabase / PostgreSQL</span>
+          <span class="badge-swiss px-2.5 py-0.5">Microsoft Graph API</span>
+          <span class="badge-swiss px-2.5 py-0.5">APIs REST</span>
+          <span class="badge-swiss px-2.5 py-0.5">WhatsApp API</span>
+          <span class="badge-swiss px-2.5 py-0.5">JavaScript</span>
+          <span class="badge-swiss px-2.5 py-0.5">IA (Claude)</span>
+        </div>
+
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-6 pt-6 max-w-2xl">
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-[#666666] block mb-1">Papel</span>
+            <span class="text-sm text-[#121212] font-medium">Arquitetura &amp; desenvolvimento</span>
+          </div>
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-[#666666] block mb-1">Antes</span>
+            <span class="text-sm text-[#121212] font-medium">Conferência manual</span>
+          </div>
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-[#666666] block mb-1">Agora</span>
+            <span class="text-sm text-[#121212] font-medium">Automático, 05:00</span>
+          </div>
+          <div>
+            <span class="text-[11px] font-mono uppercase tracking-widest text-[#666666] block mb-1">Status</span>
+            <span class="text-sm text-[#121212] font-medium">Em validação</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-20 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-5 text-left">
+        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block">01. O problema</span>
+        <h2 class="font-sans text-2xl lg:text-[1.75rem] font-semibold text-[#121212] tracking-[-0.02em] max-w-2xl">
+          Uma conferência manual, processo por processo
+        </h2>
+        <p class="text-base text-[#555555] leading-[1.6] max-w-2xl">
+          As publicações chegavam em um documento Word. Uma pessoa copiava o número de cada processo, buscava no ERP e anotava duas coisas: se o processo estava cadastrado e se aquela publicação tinha sido captada pelo sistema. Depois passava para o próximo, até o fim da lista.
+        </p>
+        <p class="text-base text-[#555555] leading-[1.6] max-w-2xl">
+          O tempo gasto crescia junto com o volume de publicações e dependia de atenção total: um número copiado errado ou uma linha pulada significava uma publicação sem tratamento, com risco de prazo perdido.
+        </p>
+
+        <figure class="exhibit diagram-fig">
+          <p class="exhibit-tag">Anexo A: a rotina manual</p>
+          <svg viewBox="0 0 1040 230" role="img" aria-label="Rotina manual: documento Word com as publicações, cópia do número do processo, busca no ERP, anotação do resultado, repetida para cada publicação">
+            <defs>
+              <marker id="arrM" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#121212"></path>
+              </marker>
+              <marker id="arrMf" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#9A9AA0"></path>
+              </marker>
+            </defs>
+
+            <rect class="diagram-box store" x="20" y="50" width="180" height="72" rx="6"></rect>
+            <text x="32" y="70" class="lbl">entrada</text>
+            <text x="32" y="91" font-size="12.5">Publicações</text>
+            <text x="32" y="109" font-size="12.5">em Word</text>
+
+            <rect class="diagram-box" x="280" y="50" width="180" height="72" rx="6"></rect>
+            <text x="292" y="70" class="lbl">1 · à mão</text>
+            <text x="292" y="91" font-size="12.5">Copia o nº</text>
+            <text x="292" y="109" font-size="12.5">do processo</text>
+
+            <rect class="diagram-box" x="540" y="50" width="180" height="72" rx="6"></rect>
+            <text x="552" y="70" class="lbl">2 · à mão</text>
+            <text x="552" y="91" font-size="12.5">Busca no ERP</text>
+
+            <rect class="diagram-box" x="800" y="50" width="220" height="72" rx="6"></rect>
+            <text x="812" y="70" class="lbl">3 · à mão</text>
+            <text x="812" y="91" font-size="12.5">Cadastrado?</text>
+            <text x="812" y="109" font-size="12.5">Publicação captada?</text>
+
+            <path class="edge" d="M200,86 H280" marker-end="url(#arrM)"></path>
+            <path class="edge" d="M460,86 H540" marker-end="url(#arrM)"></path>
+            <path class="edge" d="M720,86 H800" marker-end="url(#arrM)"></path>
+
+            <path class="edge faint" d="M910,122 V160 H370 V122" marker-end="url(#arrMf)"></path>
+            <text x="520" y="178" class="lbl">repete para cada publicação da lista</text>
+
+            <line x1="20" y1="200" x2="1020" y2="200" stroke="#E4E4E7" stroke-width="1"></line>
+            <text x="20" y="218" class="lbl">tempo cresce com o volume · sem registro do que foi conferido · erro humano sem alerta</text>
+          </svg>
+          <figcaption>Cada publicação exigia o mesmo ciclo de copiar, buscar e anotar. Não havia rastro do que tinha sido conferido nem aviso quando algo escapava.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-20 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-5 text-left">
+        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block">02. A solução</span>
+        <h2 class="font-sans text-2xl lg:text-[1.75rem] font-semibold text-[#121212] tracking-[-0.02em] max-w-2xl">
+          Um workflow que confere tudo antes do expediente
+        </h2>
+        <p class="text-base text-[#555555] leading-[1.6] max-w-2xl">
+          Todo dia às 05:00 o fluxo atualiza a base de processos do ERP no Supabase, consulta as publicações direto na API do DJEN, cruza com as publicações que o ERP captou e confere o resultado contra a base completa. Processos baixados, migrados e duplicados saem da lista.
+        </p>
+        <p class="text-base text-[#555555] leading-[1.6] max-w-2xl">
+          A equipe recebe um único e-mail com a planilha do que precisa de atenção. As entradas que vêm de fora do n8n têm nova tentativa a cada 20 minutos e, se o prazo estourar, a equipe é avisada no WhatsApp em vez de o fluxo falhar em silêncio.
+        </p>
+
+        <figure class="exhibit diagram-fig">
+          <p class="exhibit-tag">Anexo B: o workflow</p>
+          <p class="exhibit-hint">Clique em qualquer bloco do diagrama para ver o que ele faz.</p>
+          <svg viewBox="0 0 1180 545" role="img" aria-label="Diagrama interativo do workflow: quatro seções conectadas dentro da mesma execução, alimentadas por entradas externas com retentativa, terminando em um e-mail de relatório">
+            <defs>
+              <marker id="arrK2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                <path d="M0,0 L10,5 L0,10 z" fill="#121212"></path>
+              </marker>
+            </defs>
+
+            <rect class="diagram-box bound" x="40" y="95" width="875" height="315" rx="8"></rect>
+            <text x="58" y="120" class="h3lbl">1 workflow · n8n</text>
+
+            <g class="node-clickable" data-node="ext-pub" tabindex="0" role="button" aria-label="Entrada externa: e-mail de publicações do ERP">
+              <rect class="diagram-box ext" x="460" y="10" width="160" height="50" rx="6"></rect>
+              <text x="472" y="30" font-size="12">ERP</text>
+              <text x="472" y="46" class="lbl">e-mail publicações</text>
+            </g>
+
+            <g class="node-clickable" data-node="trigger" tabindex="0" role="button" aria-label="Gatilho diário das 05:00">
+              <circle cx="100" cy="255" r="26" fill="none" stroke="#121212" stroke-width="1.3"></circle>
+              <text x="100" y="259" text-anchor="middle" font-size="11">05:00</text>
+            </g>
+
+            <g class="node-clickable" data-node="b" tabindex="0" role="button" aria-label="Seção B: API do DJEN">
+              <rect class="diagram-box" x="190" y="150" width="160" height="60" rx="6"></rect>
+              <text x="205" y="185" font-size="13">B · API do DJEN</text>
+            </g>
+
+            <g class="node-clickable" data-node="c" tabindex="0" role="button" aria-label="Seção C: Publicações">
+              <rect class="diagram-box" x="460" y="150" width="175" height="60" rx="6"></rect>
+              <text x="472" y="185" font-size="13">C · Publicações</text>
+            </g>
+
+            <g class="node-clickable" data-node="a" tabindex="0" role="button" aria-label="Seção A: ERP para Supabase">
+              <rect class="diagram-box" x="190" y="300" width="160" height="60" rx="6"></rect>
+              <text x="202" y="321" font-size="12.5">A · ERP</text>
+              <text x="202" y="342" font-size="12.5">→ Supabase</text>
+            </g>
+
+            <g class="node-clickable" data-node="d" tabindex="0" role="button" aria-label="Seção D: Comparação final">
+              <rect class="diagram-box" x="740" y="225" width="160" height="60" rx="6"></rect>
+              <text x="752" y="247" font-size="12.5">D · Comparação</text>
+              <text x="752" y="267" font-size="12.5">final</text>
+            </g>
+
+            <g class="node-clickable" data-node="out" tabindex="0" role="button" aria-label="Saída: relatório final por e-mail">
+              <rect class="diagram-box store" x="1040" y="225" width="125" height="60" rx="6"></rect>
+              <text x="1054" y="248" font-size="12">Relatório</text>
+              <text x="1054" y="267" font-size="12">final</text>
+            </g>
+
+            <g class="node-clickable" data-node="ext-base" tabindex="0" role="button" aria-label="Entrada externa: e-mail da base do ERP">
+              <rect class="diagram-box ext" x="190" y="440" width="160" height="50" rx="6"></rect>
+              <text x="202" y="460" font-size="12">ERP</text>
+              <text x="202" y="476" class="lbl">e-mail base</text>
+            </g>
+
+            <path class="edge" d="M122,242 C150,205 165,180 190,180" marker-end="url(#arrK2)"></path>
+            <path class="edge" d="M122,268 C150,305 165,330 190,330" marker-end="url(#arrK2)"></path>
+
+            <path class="edge" d="M540,60 V150" marker-end="url(#arrK2)"></path>
+            <text x="548" y="132" class="lbl">retry até 10h</text>
+
+            <path class="edge" d="M270,440 V360" marker-end="url(#arrK2)"></path>
+            <text x="278" y="392" class="lbl">retry até 09h</text>
+
+            <path class="edge" d="M350,180 H460" marker-end="url(#arrK2)"></path>
+            <text x="372" y="172" class="lbl">em memória</text>
+
+            <path class="edge" d="M635,180 H820 V225" marker-end="url(#arrK2)"></path>
+            <text x="662" y="172" class="lbl">DJEN × ERP</text>
+
+            <path class="edge" d="M350,330 H820 V285" marker-end="url(#arrK2)"></path>
+            <text x="470" y="322" class="lbl">consulta completa</text>
+
+            <path class="edge" d="M900,255 H1040" marker-end="url(#arrK2)"></path>
+            <text x="930" y="247" class="lbl">único e-mail</text>
+
+            <line x1="40" y1="512" x2="915" y2="512" stroke="#E4E4E7" stroke-width="1"></line>
+            <text x="40" y="530" class="lbl">Uma execução por dia. Só as entradas que vêm de fora do n8n precisam de espera, com retentativa e alerta.</text>
+          </svg>
+
+          <div id="node-detail">
+            <p class="nd-title">Comece clicando em um bloco</p>
+            <p class="nd-body">Cada seção do diagrama corresponde a um trecho real do workflow. Clique para ver o que ele faz.</p>
+          </div>
+
+          <figcaption>A, B, C e D trocam dados dentro da mesma execução. As únicas esperas são pelas fontes que vêm de fora do n8n, com corte de horário e alerta.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-20 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-8 text-left">
+        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block">03. Decisões técnicas</span>
+        <h2 class="font-sans text-2xl lg:text-[1.75rem] font-semibold text-[#121212] tracking-[-0.02em] max-w-2xl">
+          O que faz o fluxo ser confiável
+        </h2>
+
+        <div class="grid sm:grid-cols-3 gap-5 pt-2">
+          <div class="card-swiss p-6 space-y-3">
+            <i data-lucide="refresh-cw" class="w-5 h-5 text-[#121212]"></i>
+            <h3 class="font-sans text-sm font-semibold text-[#121212]">Nova tentativa a cada 20 minutos</h3>
+            <p class="text-[13.5px] text-[#555555] leading-[1.6]">Os e-mails do ERP não têm horário garantido. O fluxo checa de novo a cada 20 min até um horário-limite e, se estourar, avisa a equipe por WhatsApp em vez de falhar calado.</p>
+          </div>
+          <div class="card-swiss p-6 space-y-3">
+            <i data-lucide="calendar-days" class="w-5 h-5 text-[#121212]"></i>
+            <h3 class="font-sans text-sm font-semibold text-[#121212]">Calendário embutido</h3>
+            <p class="text-[13.5px] text-[#555555] leading-[1.6]">Na segunda-feira o fluxo busca as publicações de sexta. No fim de semana atualiza a base, mas não cruza publicações, porque não há publicação nova.</p>
+          </div>
+          <div class="card-swiss p-6 space-y-3">
+            <i data-lucide="filter" class="w-5 h-5 text-[#121212]"></i>
+            <h3 class="font-sans text-sm font-semibold text-[#121212]">Relatório só com o que importa</h3>
+            <p class="text-[13.5px] text-[#555555] leading-[1.6]">Processos com status "Baixado" ou "Migrado" e linhas duplicadas saem antes do envio. A planilha final traz só o que alguém precisa olhar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-20 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-4xl mx-auto space-y-5 text-left">
+        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block">04. Uso de IA</span>
+        <h2 class="font-sans text-2xl lg:text-[1.75rem] font-semibold text-[#121212] tracking-[-0.02em] max-w-2xl">
+          IA na construção e na demonstração
+        </h2>
+
+        <div class="grid sm:grid-cols-3 gap-5 pt-2">
+          <div class="card-swiss p-6 space-y-3">
+            <i data-lucide="search-code" class="w-5 h-5 text-[#121212]"></i>
+            <h3 class="font-sans text-sm font-semibold text-[#121212]">Desenhar o cruzamento</h3>
+            <p class="text-[13.5px] text-[#555555] leading-[1.6]">Usei o Claude para transformar a rotina manual em regras: como casar o número do processo entre DJEN e ERP, o que conta como "não captado" e quais casos tirar do relatório.</p>
+          </div>
+          <div class="card-swiss p-6 space-y-3">
+            <i data-lucide="code" class="w-5 h-5 text-[#121212]"></i>
+            <h3 class="font-sans text-sm font-semibold text-[#121212]">Construir e revisar</h3>
+            <p class="text-[13.5px] text-[#555555] leading-[1.6]">A IA ajudou a escrever e revisar os nós de código em JavaScript: retentativa com prazo, regra de segunda-feira e filtros de status. A arquitetura e a validação com a equipe ficaram comigo.</p>
+          </div>
+          <div class="card-swiss p-6 space-y-3">
+            <i data-lucide="monitor-play" class="w-5 h-5 text-[#121212]"></i>
+            <h3 class="font-sans text-sm font-semibold text-[#121212]">Mostrar sem expor dados</h3>
+            <p class="text-[13.5px] text-[#555555] leading-[1.6]">A partir do export do workflow, sem credenciais nem parâmetros, gerei com o Claude uma réplica interativa com dados fictícios e 5 cenários. Ela mostra o fluxo funcionando sem abrir nenhum dado do escritório.</p>
+          </div>
+        </div>
+
+        <figure class="exhibit" id="video">
+          <p class="exhibit-tag">Anexo C: o fluxo em execução (dados fictícios)</p>
+          <video src="demo.mp4" controls preload="metadata" playsinline class="w-full rounded-sm border border-[#E4E4E7] bg-[#121212]" aria-label="Vídeo de 34 segundos mostrando a execução simulada do workflow"></video>
+          <figcaption>Gravado a partir da <a href="demo.html" target="_blank" rel="noopener" class="underline underline-offset-2">demo interativa</a>, onde dá para escolher o cenário (dia útil, segunda-feira, e-mail atrasado, prazo estourado, sábado) e clicar em cada bloco para ver os dados que saíram dele.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="py-16 lg:py-20 px-6 lg:px-12">
+      <div class="max-w-4xl mx-auto space-y-8 text-left">
+
+        <div class="card-swiss p-6 sm:p-7 flex items-start gap-4">
+          <i data-lucide="loader-circle" class="w-5 h-5 text-[#121212] mt-0.5 shrink-0"></i>
+          <p class="text-[14px] text-[#555555] leading-[1.6]">
+            <span class="text-[#121212] font-semibold">Status:</span> workflow entregue e rodando diariamente, em validação lado a lado com a conferência manual antes de substituí-la de vez.
+          </p>
+        </div>
+
+        <div class="flex flex-wrap items-center gap-3.5 pt-2">
+          <a href="../../index.html#work" class="btn-swiss-primary px-5 py-3 flex items-center gap-2">
+            <span>Ver outros projetos</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </a>
+          <a href="mailto:pedroiran1996@gmail.com?subject=Sobre%20o%20case%20DJEN%20x%20ERP" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
+            <i data-lucide="mail" class="w-3.5 h-3.5 text-[#555555]"></i>
+            <span>Falar sobre este case</span>
+          </a>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="py-8 px-6 border-t border-[#E4E4E7] text-xs text-[#666666]">
+    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p id="copyright-year" data-i18n="copyright_text">
+        © 2026 Pedro Peixoto. Todos os direitos reservados.
+      </p>
+      <p class="font-mono text-[#666666]">
+        Pedro Peixoto • Desenvolvedor de IA &amp; Automação
+      </p>
+    </div>
+  </footer>
+
+  <!-- Textos do painel de detalhe de cada bloco do diagrama interativo -->
+  <script type="application/json" id="diagram-node-info">
+  {
+    "trigger": {
+      "title": "Gatilho diário · 05:00",
+      "body": "Dispara o fluxo todo dia antes do expediente. Identifica o dia da semana para aplicar a regra de segunda-feira e de fim de semana."
+    },
+    "ext-base": {
+      "title": "ERP · e-mail da base",
+      "body": "Entrada externa, sem horário garantido: o ERP envia a base de processos por e-mail. O fluxo checa a cada 20 min até as 09h e avisa por WhatsApp se o prazo estourar."
+    },
+    "ext-pub": {
+      "title": "ERP · e-mail de publicações",
+      "body": "Publicações que o ERP captou. Mesma retentativa, com corte às 10h. Na segunda-feira, busca o e-mail de sexta (não há publicação nova no fim de semana)."
+    },
+    "a": {
+      "title": "A · ERP → Supabase",
+      "body": "Faz o upsert da base completa de processos no Supabase, para que a conferência final consulte sempre a versão do dia."
+    },
+    "b": {
+      "title": "B · API do DJEN",
+      "body": "Consulta as publicações do dia direto na API do DJEN, uma pesquisa de cada vez, e avisa no WhatsApp quantas foram encontradas."
+    },
+    "c": {
+      "title": "C · Publicações",
+      "body": "Cruza as publicações do DJEN com as que o ERP captou e fica só com as que o ERP não trouxe."
+    },
+    "d": {
+      "title": "D · Comparação final",
+      "body": "Confere o resultado da seção C contra a base completa no Supabase e remove processos baixados, migrados e duplicados."
+    },
+    "out": {
+      "title": "Relatório final",
+      "body": "Um único e-mail para a equipe, com a planilha dos processos que precisam de atenção no dia."
+    }
+  }
+  </script>
+
+  <script src="../../assets/js/main.js"></script>
+  <script src="../../assets/js/case-study.js"></script>
+</body>
+</html>
