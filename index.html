@@ -27,7 +27,7 @@
 
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="bg-[#F6F5F1] text-[#121212] font-mono antialiased min-h-screen flex flex-col relative">
+<body class="bg-[#F6F5F1] text-[#121212] font-mono antialiased min-h-screen flex flex-col relative has-statusbar">
 
   <!-- Acessibilidade: Skip to Content -->
   <a href="#main-content" class="sr-only focus:not-sr-only bg-[#121212] text-white font-medium text-xs rounded-sm shadow-xl transition-all" data-i18n="skip_to_content">
@@ -66,15 +66,15 @@
 
   <main id="main-content" class="flex-1">
 
-    <!-- 2. Hero: terminal digitando o nome + foto -->
-    <section id="hero" class="min-h-[calc(100vh-62px)] flex flex-col justify-between pt-10 lg:pt-14 pb-0 border-b border-[#E4E4E7]">
+    <!-- 2. Hero: terminal digita o nome e depois vira um REPL interativo -->
+    <section id="hero" class="hero-stage relative isolate min-h-[calc(100vh-62px-28px)] flex flex-col justify-between pt-10 lg:pt-14 pb-0 border-b border-[#E4E4E7]">
       <div class="my-auto px-6 lg:px-12">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
           <div class="lg:col-span-7 space-y-8">
 
             <!-- Terminal -->
-            <div class="term" role="presentation">
+            <div class="term term-hero" id="hero-term">
               <div class="term-bar">
                 <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
                 <span class="term-title">~/pedro — node</span>
@@ -82,16 +82,34 @@
               <div class="term-body">
                 <p class="term-line" aria-hidden="true"><span class="term-prompt">&gt;</span> <span id="type-cmd"><span class="tok-obj">console</span><span class="tok-punc">.</span><span class="tok-fn">log</span><span class="tok-punc">(</span><span class="tok-str">"Pedro Peixoto"</span><span class="tok-punc">)</span></span><span class="caret" id="caret-cmd" hidden></span></p>
                 <h1 class="term-name" aria-label="Pedro Peixoto"><span id="type-out">Pedro Peixoto</span><span class="caret" id="caret-out"></span></h1>
-                <p class="term-line term-dim reveal" data-reveal="1" data-i18n="hero_role">// Desenvolvedor de IA &amp; Automação @ HCLB Advogados</p>
-                <p class="term-line term-dim reveal" data-reveal="2" aria-hidden="true">undefined</p>
+
+                <!-- Histórico do REPL -->
+                <div class="term-log reveal" id="term-log" data-reveal="1" role="log" aria-live="polite">
+                  <p class="term-line term-dim" data-i18n="hero_role">// Desenvolvedor de IA &amp; Automação @ HCLB Advogados</p>
+                </div>
+
+                <!-- Entrada do REPL -->
+                <form class="term-input reveal" id="term-form" data-reveal="2" autocomplete="off" novalidate>
+                  <label for="term-in" class="term-prompt" aria-hidden="true">&gt;</label>
+                  <input id="term-in" type="text" inputmode="text" spellcheck="false" autocapitalize="off" autocorrect="off" autocomplete="off" maxlength="60" placeholder="help()" aria-label="Terminal interativo: digite um comando, por exemplo help()" data-i18n-aria="term_aria">
+                </form>
+
+                <div class="term-chips reveal" data-reveal="3">
+                  <span class="term-dim" data-i18n="term_try">// tenta:</span>
+                  <button type="button" class="term-chip" data-i18n="chip_about">sobre()</button>
+                  <button type="button" class="term-chip" data-i18n="chip_work">projetos()</button>
+                  <button type="button" class="term-chip">stack()</button>
+                  <button type="button" class="term-chip" data-i18n="chip_contact">contato()</button>
+                  <button type="button" class="term-chip">help()</button>
+                </div>
               </div>
             </div>
 
-            <p class="reveal text-[14px] sm:text-[15px] text-[#4B4B4F] leading-[1.75] max-w-2xl" data-reveal="3" data-i18n="hero_p">
-              Bacharel em Direito que virou dev. Construo aplicações web, automações no n8n e agentes de IA ligados a bancos de dados e LLMs. Já reduzi em 90% o tempo operacional e em 70% a perda de prazos.
+            <p class="reveal text-[14px] sm:text-[15px] text-[#4B4B4F] leading-[1.75] max-w-2xl" data-reveal="4" data-i18n="hero_p">
+              Bacharel em Direito que virou dev. Construo aplicações web, automações no n8n e agentes de IA ligados a bancos de dados e LLMs. Já reduzi em 90% o tempo operacional.
             </p>
 
-            <div class="reveal flex flex-wrap items-center gap-3" data-reveal="4">
+            <div class="reveal flex flex-wrap items-center gap-3" data-reveal="5">
               <a href="#work" class="btn-swiss-primary px-5 py-3 flex items-center gap-2">
                 <span data-i18n="hero_cta_work">ver trabalhos</span>
                 <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
@@ -107,14 +125,19 @@
             </div>
           </div>
 
-          <!-- Foto -->
-          <figure class="lg:col-span-5 reveal max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full" data-reveal="2">
+          <!-- Foto: aparece em ASCII e "decodifica" para a imagem -->
+          <figure class="lg:col-span-5 reveal max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full" data-reveal="3">
             <div class="photo-frame">
               <div class="term-bar">
                 <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
                 <span class="term-title">pedro.jpg</span>
+                <button type="button" class="ascii-toggle" id="ascii-toggle" aria-pressed="false" title="Alternar modo ASCII" data-i18n-title="ascii_title">ascii</button>
               </div>
-              <img src="assets/img/pedro-show.jpg" alt="Pedro Peixoto sorrindo na arquibancada de um estádio antes de um show do Oasis" width="720" height="900" data-i18n-alt="photo_alt">
+              <div class="photo-wrap" id="photo-wrap">
+                <img id="photo-img" src="assets/img/pedro-show.jpg" alt="Pedro Peixoto sorrindo na arquibancada de um estádio antes de um show do Oasis" width="720" height="900" data-i18n-alt="photo_alt">
+                <canvas id="photo-ascii" width="1440" height="1800" aria-hidden="true"></canvas>
+                <span class="photo-scan" aria-hidden="true"></span>
+              </div>
               <figcaption class="photo-caption" data-i18n="photo_caption">// fora do código: show do Oasis, 2025</figcaption>
             </div>
           </figure>
@@ -148,27 +171,27 @@
       <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
         <div class="lg:col-span-6 space-y-5">
-          <span class="section-label" data-i18n="about_label">// sobre mim</span>
-          <h2 class="text-2xl lg:text-[1.875rem] font-bold text-[#121212] leading-[1.25] tracking-[-0.03em]" data-i18n="about_title">
-            Do Direito para o código, sem largar nenhum dos dois.
+          <p class="cmdline sr"><span class="cmd-prompt">$</span> <span class="cmd-typed" data-i18n="about_label">cat sobre.md</span><span class="caret caret-sm"></span></p>
+          <h2 class="sr text-2xl lg:text-[1.875rem] font-bold text-[#121212] leading-[1.25] tracking-[-0.03em]" style="--d:.55s" data-i18n="about_title">
+            Direito e TI
           </h2>
-          <p class="text-[14px] sm:text-[15px] text-[#4B4B4F] leading-[1.75]" data-i18n="about_p">
+          <p class="sr text-[14px] sm:text-[15px] text-[#4B4B4F] leading-[1.75]" style="--d:.7s" data-i18n="about_p">
             Me formei em Direito e descobri que o que eu mais gostava era resolver os gargalos do dia a dia do escritório. Hoje junto as duas coisas: workflows no n8n, agentes de IA generativa e dados (Power BI e SQL) para tirar do caminho as tarefas repetitivas de quem trabalha com processos.
           </p>
         </div>
 
-        <div class="lg:col-span-6">
+        <div class="lg:col-span-6 sr" style="--d:.2s">
           <div class="term">
             <div class="term-bar">
               <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
               <span class="term-title">pedro.js</span>
             </div>
-            <div class="term-body code-block" id="about-code" aria-label="Resumo em código">
+            <div class="term-body code-block sr-lines" id="about-code">
               <div class="code-line"><span class="ln">1</span><span class="tok-key">const</span> <span class="tok-obj">pedro</span> <span class="tok-punc">=</span> <span class="tok-punc">{</span></div>
               <div class="code-line"><span class="ln">2</span>  <span class="tok-fn" data-i18n="code_k_education">formacao</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_education">"Direito (UNIFOR)"</span><span class="tok-punc">,</span></div>
               <div class="code-line"><span class="ln">3</span>  <span class="tok-fn" data-i18n="code_k_now">hoje</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_now">"IA &amp; Automação @ HCLB Advogados"</span><span class="tok-punc">,</span></div>
               <div class="code-line"><span class="ln">4</span>  <span class="tok-fn">stack</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"n8n"</span><span class="tok-punc">,</span> <span class="tok-str">"Next.js"</span><span class="tok-punc">,</span> <span class="tok-str">"Python"</span><span class="tok-punc">,</span> <span class="tok-str">"Supabase"</span><span class="tok-punc">,</span> <span class="tok-str">"SQL"</span><span class="tok-punc">,</span> <span class="tok-str">"LLMs"</span><span class="tok-punc">],</span></div>
-              <div class="code-line"><span class="ln">5</span>  <span class="tok-fn" data-i18n="code_k_results">resultados</span><span class="tok-punc">:</span> <span class="tok-punc">{</span> <span class="tok-fn" data-i18n="code_k_time">tempoOperacional</span><span class="tok-punc">:</span> <span class="tok-num">"-90%"</span><span class="tok-punc">,</span> <span class="tok-fn" data-i18n="code_k_deadlines">prazosPerdidos</span><span class="tok-punc">:</span> <span class="tok-num">"-70%"</span> <span class="tok-punc">},</span></div>
+              <div class="code-line"><span class="ln">5</span>  <span class="tok-fn" data-i18n="code_k_results">resultados</span><span class="tok-punc">:</span> <span class="tok-punc">{</span> <span class="tok-fn" data-i18n="code_k_time">tempoOperacional</span><span class="tok-punc">:</span> <span class="tok-num">"-90%"</span> <span class="tok-punc">},</span></div>
               <div class="code-line"><span class="ln">6</span>  <span class="tok-fn" data-i18n="code_k_offline">foraDoCodigo</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_offline">"show de rock no estádio"</span><span class="tok-punc">,</span></div>
               <div class="code-line"><span class="ln">7</span><span class="tok-punc">};</span></div>
             </div>
@@ -183,11 +206,11 @@
       <div class="max-w-6xl mx-auto space-y-10 text-left">
 
         <div class="space-y-4">
-          <span class="section-label" data-i18n="work_label">// projetos selecionados</span>
-          <h2 class="text-2xl lg:text-[1.875rem] font-bold text-[#121212] tracking-[-0.03em]" data-i18n="work_title">
+          <p class="cmdline sr"><span class="cmd-prompt">$</span> <span class="cmd-typed" data-i18n="work_label">ls -la projetos/</span><span class="caret caret-sm"></span></p>
+          <h2 class="sr text-2xl lg:text-[1.875rem] font-bold text-[#121212] tracking-[-0.03em]" style="--d:.65s" data-i18n="work_title">
             Cases &amp; aplicações
           </h2>
-          <p class="text-[14px] sm:text-[15px] text-[#4B4B4F] max-w-2xl leading-[1.75]" data-i18n="work_subtitle">
+          <p class="sr text-[14px] sm:text-[15px] text-[#4B4B4F] max-w-2xl leading-[1.75]" style="--d:.8s" data-i18n="work_subtitle">
             Resumos do que construí. Os botões levam ao código, à demo ou ao case completo.
           </p>
         </div>
@@ -208,9 +231,10 @@
         <div class="space-y-8 pt-2">
 
           <!-- Card 1: Gerenciador de Links TRT -->
-          <article class="project-case-card card-swiss p-7 lg:p-10" data-categories="web">
+          <article class="project-case-card card-swiss sr p-7 lg:p-10" data-categories="web">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div class="lg:col-span-7 space-y-4">
+                <p class="card-path"><span>01</span> ~/projetos/gerenciador</p>
                 <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_1_role">Projeto Pessoal • Desenvolvedor Web</span>
                 <h3 class="text-lg lg:text-xl font-bold text-[#121212] tracking-[-0.02em]" data-i18n="case_1_h3">
                   Gerenciador de Links TRT & Autenticação A1 OTP
@@ -236,7 +260,7 @@
                 </div>
               </div>
               <div class="lg:col-span-5" aria-hidden="true">
-                <div class="preview-term p-5">
+                <div class="preview-term sr-lines p-5">
                   <div><span class="term-prompt">$</span> npm run dev</div>
                   <div class="term-dim">▲ Next.js · ready</div>
                   <div><span class="tok-fn">tribunais</span><span class="tok-punc">:</span> <span class="tok-num">24</span> <span class="tok-punc">+</span> <span class="tok-str">"TST"</span></div>
@@ -248,9 +272,10 @@
           </article>
 
           <!-- Card 2: Automação de Diários (HCLB Advogados) -->
-          <article class="project-case-card card-swiss p-7 lg:p-10" data-categories="n8n">
+          <article class="project-case-card card-swiss sr p-7 lg:p-10" data-categories="n8n">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div class="lg:col-span-7 space-y-4">
+                <p class="card-path"><span>02</span> ~/projetos/diarios-djen</p>
                 <span class="badge-swiss px-3 py-1.5 inline-flex items-center gap-2">
                   <img src="assets/img/hclb-logo.svg" alt="" class="h-3.5 w-auto object-contain">
                   <span data-i18n="case_2_role">HCLB Advogados • Desenvolvedor de IA & Automação</span>
@@ -276,7 +301,7 @@
                 </div>
               </div>
               <div class="lg:col-span-5" aria-hidden="true">
-                <div class="preview-term p-5">
+                <div class="preview-term sr-lines p-5">
                   <div><span class="term-dim">cron</span> <span class="tok-str">"0 5 * * *"</span></div>
                   <div><span class="term-prompt">→</span> DJEN <span class="tok-punc">×</span> ERP</div>
                   <div><span class="tok-fn">retry</span><span class="tok-punc">:</span> <span class="tok-num">true</span></div>
@@ -288,9 +313,10 @@
           </article>
 
           <!-- Card 3: Automação de GRUs Trabalhistas -->
-          <article class="project-case-card card-swiss p-7 lg:p-10" data-categories="n8n automation python">
+          <article class="project-case-card card-swiss sr p-7 lg:p-10" data-categories="n8n automation python">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
               <div class="lg:col-span-7 space-y-4">
+                <p class="card-path"><span>03</span> ~/projetos/gru-trabalhista</p>
                 <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_4_role">Automação & RPA • Desenvolvedor Python</span>
                 <h3 class="text-lg lg:text-xl font-bold text-[#121212] tracking-[-0.02em]" data-i18n="case_4_h3">
                   Emissão Automatizada de GRUs Trabalhistas
@@ -312,7 +338,7 @@
                 </div>
               </div>
               <div class="lg:col-span-5" aria-hidden="true">
-                <div class="preview-term p-5">
+                <div class="preview-term sr-lines p-5">
                   <div><span class="term-prompt">$</span> python gru.py <span class="tok-str">--processo</span></div>
                   <div><span class="tok-key">import</span> pandas <span class="tok-key">as</span> pd</div>
                   <div class="term-dim"># dados preenchidos a partir</div>
@@ -327,28 +353,28 @@
       </div>
     </section>
 
-    <!-- 5. Contato -->
-    <section id="contact" class="py-24 lg:py-32 px-6 lg:px-12">
+    <!-- 5. Contato (fecha a página em modo terminal) -->
+    <section id="contact" class="contact-dark py-24 lg:py-32 px-6 lg:px-12">
       <div class="max-w-6xl mx-auto space-y-8 text-left">
-        <span class="section-label" data-i18n="contact_label">// contato</span>
-        <h2 class="text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-[#121212] tracking-[-0.03em] max-w-3xl leading-tight" data-i18n="contact_title">
+        <p class="cmdline sr cmdline-dark"><span class="cmd-prompt">$</span> <span class="cmd-typed" data-i18n="contact_label">./contato.sh --agora</span><span class="caret caret-sm"></span></p>
+        <h2 class="sr text-2xl sm:text-3xl lg:text-[2.5rem] font-bold text-white tracking-[-0.03em] max-w-3xl leading-tight" style="--d:.7s" data-i18n="contact_title">
           Vamos conversar sobre o seu próximo projeto?
         </h2>
-        <div class="flex flex-wrap items-center gap-3 pt-2">
-          <a href="mailto:pedroiran1996@gmail.com" class="btn-swiss-primary px-5 py-3.5 flex items-center gap-2.5">
+        <div class="sr flex flex-wrap items-center gap-3 pt-2" style="--d:.9s">
+          <a href="mailto:pedroiran1996@gmail.com" class="btn-term-primary px-5 py-3.5 flex items-center gap-2.5">
             <i data-lucide="mail" class="w-4 h-4"></i>
             <span data-i18n="contact_link_email">enviar e-mail</span>
           </a>
-          <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
-            <svg class="w-4 h-4 text-[#4B4B4F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+          <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-term-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
             <span data-i18n="contact_link_linkedin">linkedin</span>
           </a>
-          <a href="https://github.com/pedronmpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
-            <svg class="w-4 h-4 text-[#4B4B4F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.05c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg>
+          <a href="https://github.com/pedronmpeixoto" target="_blank" rel="noopener noreferrer" class="btn-term-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.05c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg>
             <span data-i18n="contact_link_github">github</span>
           </a>
-          <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
-            <i data-lucide="file-text" class="w-4 h-4 text-[#4B4B4F]"></i>
+          <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-term-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="file-text" class="w-4 h-4"></i>
             <span data-i18n="contact_link_cv">currículo.pdf</span>
           </a>
         </div>
@@ -357,12 +383,25 @@
 
   </main>
 
-  <footer class="py-8 px-6 lg:px-12 border-t border-[#E4E4E7] text-xs text-[#6B6B70]">
+  <footer class="footer-dark py-8 px-6 lg:px-12 text-xs">
     <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
       <p id="copyright-year" data-i18n="copyright_text">© 2026 Pedro Peixoto. Todos os direitos reservados.</p>
-      <p><span class="text-[#15803D]">$</span> <span data-i18n="footer_built">feito à mão, linha por linha</span><span class="caret" style="background:#15803D;height:1em;width:.5em"></span></p>
+      <p><span class="term-prompt">$</span> <span data-i18n="footer_built">feito à mão, linha por linha</span><span class="caret caret-sm"></span></p>
     </div>
   </footer>
+
+  <!-- Barra de status (estilo vim/tmux): seção atual e posição na página -->
+  <div class="statusbar" id="statusbar" aria-hidden="true">
+    <span class="sb-progress" id="sb-progress"></span>
+    <span class="sb-mode" id="sb-mode">NORMAL</span>
+    <span class="sb-seg sb-branch"><i data-lucide="git-branch" class="w-3 h-3"></i>main</span>
+    <span class="sb-seg sb-file" id="sb-file">~/pedro/index.js</span>
+    <span class="sb-spacer"></span>
+    <span class="sb-seg sb-hint"><kbd>/</kbd> <span data-i18n="sb_hint">terminal</span></span>
+    <span class="sb-seg sb-hide-sm" id="sb-lang">pt-BR</span>
+    <span class="sb-seg sb-hide-sm">utf-8</span>
+    <span class="sb-pos" id="sb-pos">Top</span>
+  </div>
 
   <script src="assets/js/main.js"></script>
 </body>

@@ -11,6 +11,9 @@ Este é o repositório do portfólio profissional de **Pedro Peixoto**, publicad
 ## 🛠️ Tecnologias & Destaques
 
 - **HTML5 Semântico & Tailwind CSS (Play CDN)**: visual de terminal, com JetBrains Mono (Google Fonts) e intro animada que digita `console.log("Pedro Peixoto")`.
+- **Terminal interativo**: depois da intro, o hero vira um REPL (`help()`, `sobre()`, `projetos()`, `stack()`, `contato()`, `cv()`, `foto()`, `lang("en")`, `clear()`); a tecla `/` leva até ele.
+- **Foto em ASCII**: a foto é desenhada em caracteres num `<canvas>` e "decodifica" para a imagem; o botão `ascii` alterna os modos.
+- **Barra de status** no rodapé (estilo vim/tmux) com a seção atual e a posição na página.
 - **Ícones**: [Lucide Icons](https://lucide.dev/).
 - **Bilíngue**: alternância PT/EN feita em JavaScript puro, sem dependências.
 - **Projetos em Destaque**:
