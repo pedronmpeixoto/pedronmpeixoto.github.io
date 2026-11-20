@@ -30,6 +30,8 @@ Este é o repositório do portfólio profissional de **Pedro Peixoto**, publicad
 pedronmpeixoto.github.io/
 ├── index.html                      # Página principal
 ├── curriculo-pedro-peixoto.pdf     # Currículo (fica na raiz para não quebrar links já compartilhados)
+├── curriculo/
+│   └── gerar_curriculo.py          # Conteúdo do currículo e script que gera o PDF acima
 ├── projetos/
 │   └── diarios-djen/
 │       └── index.html              # Case: Automação de Diários da Justiça & Cruzamento ERP
@@ -54,6 +56,15 @@ pedronmpeixoto.github.io/
 - CSS, JavaScript e imagens ficam em `assets/`, separados por tipo.
 - Textos traduzíveis usam o atributo `data-i18n` e ficam no objeto `translations` de `assets/js/main.js`.
 - Nenhuma credencial, senha ou dado interno do escritório entra no repositório.
+
+### Atualizando o currículo
+
+O conteúdo do currículo fica em `curriculo/gerar_curriculo.py`. Depois de editar, gere o PDF de novo:
+
+```
+pip install "reportlab>=4.2"
+python curriculo/gerar_curriculo.py
+```
 
 ### Rodando localmente
 
