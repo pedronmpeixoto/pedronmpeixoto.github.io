@@ -59,7 +59,6 @@ const translations = {
     contact_link_linkedin: "linkedin",
     contact_link_github: "github",
     contact_link_email: "enviar e-mail",
-    footer_built: "feito à mão, linha por linha",
     copyright_text: `© ${new Date().getFullYear()} Pedro Peixoto. Todos os direitos reservados.`
   },
   en: {
@@ -117,7 +116,6 @@ const translations = {
     contact_link_linkedin: "linkedin",
     contact_link_github: "github",
     contact_link_email: "send email",
-    footer_built: "handmade, line by line",
     copyright_text: `© ${new Date().getFullYear()} Pedro Peixoto. All rights reserved.`
   }
 };
