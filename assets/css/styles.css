@@ -46,6 +46,20 @@ body {
 }
 
 ::selection { background: #121212; color: #FFFFFF; }
+.term ::selection, .preview-term ::selection, .contact-dark ::selection,
+.footer-dark ::selection, .statusbar ::selection { background: rgba(74, 222, 128, 0.35); color: #FFFFFF; }
+
+/* Âncoras não ficam escondidas atrás do cabeçalho fixo */
+section[id] { scroll-margin-top: 62px; }
+
+/* Quebras de linha mais equilibradas */
+h1, h2, h3 { text-wrap: balance; }
+p { text-wrap: pretty; }
+
+/* Foco visível e consistente para quem navega pelo teclado */
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.term :focus-visible, .contact-dark :focus-visible, .footer-dark :focus-visible { outline-color: var(--term-green); }
+.term-input input:focus-visible { outline: 0; }
 
 /* Acessibilidade: skip link */
 .sr-only {
@@ -63,7 +77,9 @@ body {
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-subtle);
+  transition: box-shadow 0.25s ease;
 }
+.header-swiss.is-scrolled { box-shadow: 0 10px 24px -20px rgba(18, 18, 18, 0.45); }
 
 .brand-name {
   font-family: var(--font-mono);
@@ -82,9 +98,10 @@ body {
   color: var(--text-muted);
   transition: color 0.2s ease;
 }
-.nav-link-swiss::before { content: "./"; color: #A1A1AA; }
-.nav-link-swiss:hover { color: var(--text-primary); }
-.nav-link-swiss:hover::before { color: var(--accent); }
+.nav-link-swiss::before { content: "./"; color: #8E8E96; transition: color 0.2s ease; }
+.nav-link-swiss:hover, .nav-link-swiss.is-active { color: var(--text-primary); }
+.nav-link-swiss:hover::before, .nav-link-swiss.is-active::before { color: var(--accent); }
+.nav-link-swiss.is-active { font-weight: 600; }
 
 /* Link "voltar" das páginas de case */
 .back-link { font-size: 12.5px; font-weight: 500; color: var(--text-muted); transition: color 0.2s ease; }
@@ -112,6 +129,14 @@ body {
   transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .btn-swiss-primary:hover { opacity: 0.88; }
+.btn-swiss-primary:active, .btn-swiss-secondary:active,
+.btn-term-primary:active, .btn-term-secondary:active { transform: translateY(1px); }
+
+/* Setas dos botões andam um pouco no hover */
+.btn-swiss-primary svg, .btn-swiss-secondary svg, .btn-term-primary svg { transition: transform 0.2s ease; }
+a:hover > .lucide-arrow-right { transform: translateX(3px); }
+a:hover > .lucide-arrow-down { transform: translateY(3px); }
+a:hover > .lucide-external-link { transform: translate(1px, -1px); }
 
 .btn-swiss-secondary {
   background-color: #FFFFFF !important;
@@ -174,7 +199,7 @@ body {
 .term-dots i:nth-child(3) { background: #28C840; }
 .term-title { flex: 1; text-align: center; margin-right: 46px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.term-body { padding: 22px 22px 26px; font-size: 14px; line-height: 1.7; }
+.term-body { padding: 22px 22px 26px; font-size: 14px; line-height: 1.7; container-type: inline-size; }
 @media (min-width: 640px) { .term-body { padding: 28px 30px 32px; font-size: 15px; } }
 
 .term-line { white-space: pre-wrap; word-break: break-word; min-height: 1.7em; }
@@ -198,6 +223,11 @@ body {
   color: #FFFFFF;
   margin: 10px 0 14px;
   min-height: 1.05em;
+}
+
+/* Com container queries, o nome ocupa a largura do terminal sem quebrar */
+@supports (font-size: 1cqw) {
+  .term-name { font-size: min(4.25rem, 12cqw); white-space: nowrap; }
 }
 
 .caret {
@@ -244,7 +274,9 @@ body {
 /* ---------- Bloco de código (Sobre) ---------- */
 .code-block { font-size: 13px; line-height: 1.75; }
 .code-block .ln { color: #4B5160; user-select: none; display: inline-block; width: 2.2em; text-align: right; margin-right: 1em; }
-.code-block .code-line { white-space: pre-wrap; padding-left: 3.2em; text-indent: -3.2em; }
+/* Linha longa que quebra continua recuada, alinhada depois do número */
+.code-block .code-line { white-space: pre-wrap; padding-left: calc(3.2em + 4ch); text-indent: calc(-3.2em - 4ch); }
+@media (max-width: 639px) { .code-block { font-size: 12px; } }
 
 /* Preview dos cards em formato terminal */
 .preview-term {
@@ -350,7 +382,7 @@ body {
   caret-color: var(--term-green);
 }
 @media (min-width: 640px) { .term-input input { font-size: 15px; } }
-.term-input input::placeholder { color: #4B5160; }
+.term-input input::placeholder { color: #5F6675; }
 
 .term-chips {
   display: flex;
@@ -453,7 +485,7 @@ body {
 .js .sr-lines.in-view > * { opacity: 1; transform: none; }
 
 /* Cards */
-.card-path { font-size: 11px; color: #A1A1AA; letter-spacing: 0.01em; }
+.card-path { font-size: 11px; color: #85858D; letter-spacing: 0.01em; }
 .card-path span { color: var(--accent); font-weight: 700; margin-right: 0.5em; }
 .js .project-case-card.sr { transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.7, 0.2, 1), border-color 0.25s ease, box-shadow 0.25s ease; }
 .project-case-card.in-view:hover { transform: translate(-2px, -2px); }

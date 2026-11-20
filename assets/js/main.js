@@ -269,18 +269,18 @@ function runTerminalIntro(ascii) {
     if (done) return;
     if (i >= queue.length) {
       caretCmd.classList.remove('is-typing');
-      timer = setTimeout(finish, 520);
+      timer = setTimeout(finish, 460);
       return;
     }
     const { span, ch } = queue[i++];
     span.textContent += ch;
-    const base = /[."()]/.test(ch) ? 110 : 62; // mais lento na pontuação
-    timer = setTimeout(typeNext, base + Math.random() * 55);
+    const base = /[."()]/.test(ch) ? 95 : 52; // mais lento na pontuação
+    timer = setTimeout(typeNext, base + Math.random() * 50);
   };
 
   term.addEventListener('pointerdown', finish);
   document.addEventListener('keydown', finish);
-  timer = setTimeout(typeNext, 450);
+  timer = setTimeout(typeNext, 350);
 }
 
 /* ------------------------------------------------------------------ */
@@ -674,7 +674,10 @@ function initStatusBar() {
     ['about', { pt: 'sobre.md', en: 'about.md' }],
     ['work', { pt: 'projetos/', en: 'projects/' }],
     ['contact', { pt: 'contato.sh', en: 'contact.sh' }]
-  ].map(([id, names]) => ({ el: document.getElementById(id), names })).filter(s => s.el);
+  ].map(([id, names]) => ({ id, el: document.getElementById(id), names })).filter(s => s.el);
+
+  const header = document.querySelector('.header-swiss');
+  const navLinks = Array.from(document.querySelectorAll('.nav-link-swiss[href^="#"]'));
 
   let ticking = false;
   const update = () => {
@@ -688,6 +691,14 @@ function initStatusBar() {
     let current = sections[0];
     sections.forEach(s => { if (s.el.offsetTop <= probe) current = s; });
     if (current) file.textContent = '~/pedro/' + (current.names[currentLang] || current.names.pt);
+
+    // Cabeçalho: sombra ao rolar e link da seção atual em destaque
+    if (header) header.classList.toggle('is-scrolled', window.scrollY > 8);
+    navLinks.forEach(a => {
+      const active = !!current && a.getAttribute('href') === '#' + current.id;
+      a.classList.toggle('is-active', active);
+      if (active) a.setAttribute('aria-current', 'location'); else a.removeAttribute('aria-current');
+    });
   };
   const request = () => { if (!ticking) { ticking = true; requestAnimationFrame(update); } };
 

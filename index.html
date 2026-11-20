@@ -11,6 +11,9 @@
   <meta property="og:description" content="Especialista em automação de processos, integração de LLMs, n8n, RPA e desenvolvimento web.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://pedronmpeixoto.github.io/assets/img/pedro-show.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#0E1013">
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg">
 
   <!-- Marca o documento como "com JS" antes da pintura, para a animação do terminal não piscar -->
   <script>document.documentElement.classList.add('js');</script>
@@ -53,7 +56,7 @@
         <button
           type="button"
           class="lang-toggle-btn flex items-center gap-1.5 text-[12px] text-[#6B6B70] hover:text-[#111111] transition-colors cursor-pointer border border-[#E4E4E7] rounded px-2 py-1 bg-white"
-          title="Alternar idioma / Toggle language"
+          title="Alternar idioma / Toggle language" aria-label="Alternar idioma / Toggle language"
         >
           <span class="lang-pt font-semibold text-[#121212]">PT</span>
           <span class="text-[#D4D4D8]">/</span>
@@ -67,7 +70,7 @@
   <main id="main-content" class="flex-1">
 
     <!-- 2. Hero: terminal digita o nome e depois vira um REPL interativo -->
-    <section id="hero" class="hero-stage relative isolate min-h-[calc(100vh-62px-28px)] flex flex-col justify-between pt-10 lg:pt-14 pb-0 border-b border-[#E4E4E7]">
+    <section id="hero" class="hero-stage relative isolate min-h-[calc(100svh-90px)] flex flex-col justify-between pt-10 lg:pt-14 pb-0 border-b border-[#E4E4E7]">
       <div class="my-auto px-6 lg:px-12">
         <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
@@ -134,7 +137,7 @@
                 <button type="button" class="ascii-toggle" id="ascii-toggle" aria-pressed="false" title="Alternar modo ASCII" data-i18n-title="ascii_title">ascii</button>
               </div>
               <div class="photo-wrap" id="photo-wrap">
-                <img id="photo-img" src="assets/img/pedro-show.jpg" alt="Pedro Peixoto sorrindo na arquibancada de um estádio antes de um show do Oasis" width="720" height="900" data-i18n-alt="photo_alt">
+                <img id="photo-img" src="assets/img/pedro-show.jpg" alt="Pedro Peixoto sorrindo na arquibancada de um estádio antes de um show do Oasis" width="720" height="900" decoding="async" fetchpriority="high" data-i18n-alt="photo_alt">
                 <canvas id="photo-ascii" width="1440" height="1800" aria-hidden="true"></canvas>
                 <span class="photo-scan" aria-hidden="true"></span>
               </div>
@@ -190,10 +193,13 @@
               <div class="code-line"><span class="ln">1</span><span class="tok-key">const</span> <span class="tok-obj">pedro</span> <span class="tok-punc">=</span> <span class="tok-punc">{</span></div>
               <div class="code-line"><span class="ln">2</span>  <span class="tok-fn" data-i18n="code_k_education">formacao</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_education">"Direito (UNIFOR)"</span><span class="tok-punc">,</span></div>
               <div class="code-line"><span class="ln">3</span>  <span class="tok-fn" data-i18n="code_k_now">hoje</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_now">"IA &amp; Automação @ HCLB Advogados"</span><span class="tok-punc">,</span></div>
-              <div class="code-line"><span class="ln">4</span>  <span class="tok-fn">stack</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"n8n"</span><span class="tok-punc">,</span> <span class="tok-str">"Next.js"</span><span class="tok-punc">,</span> <span class="tok-str">"Python"</span><span class="tok-punc">,</span> <span class="tok-str">"Supabase"</span><span class="tok-punc">,</span> <span class="tok-str">"SQL"</span><span class="tok-punc">,</span> <span class="tok-str">"LLMs"</span><span class="tok-punc">],</span></div>
-              <div class="code-line"><span class="ln">5</span>  <span class="tok-fn" data-i18n="code_k_results">resultados</span><span class="tok-punc">:</span> <span class="tok-punc">{</span> <span class="tok-fn" data-i18n="code_k_time">tempoOperacional</span><span class="tok-punc">:</span> <span class="tok-num">"-90%"</span> <span class="tok-punc">},</span></div>
-              <div class="code-line"><span class="ln">6</span>  <span class="tok-fn" data-i18n="code_k_offline">foraDoCodigo</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_offline">"show de rock no estádio"</span><span class="tok-punc">,</span></div>
-              <div class="code-line"><span class="ln">7</span><span class="tok-punc">};</span></div>
+              <div class="code-line"><span class="ln">4</span>  <span class="tok-fn">stack</span><span class="tok-punc">:</span> <span class="tok-punc">[</span></div>
+              <div class="code-line"><span class="ln">5</span>    <span class="tok-str">"n8n"</span><span class="tok-punc">,</span> <span class="tok-str">"Next.js"</span><span class="tok-punc">,</span> <span class="tok-str">"Python"</span><span class="tok-punc">,</span></div>
+              <div class="code-line"><span class="ln">6</span>    <span class="tok-str">"Supabase"</span><span class="tok-punc">,</span> <span class="tok-str">"SQL"</span><span class="tok-punc">,</span> <span class="tok-str">"LLMs"</span><span class="tok-punc">,</span></div>
+              <div class="code-line"><span class="ln">7</span>  <span class="tok-punc">],</span></div>
+              <div class="code-line"><span class="ln">8</span>  <span class="tok-fn" data-i18n="code_k_results">resultados</span><span class="tok-punc">:</span> <span class="tok-punc">{</span> <span class="tok-fn" data-i18n="code_k_time">tempoOperacional</span><span class="tok-punc">:</span> <span class="tok-num">"-90%"</span> <span class="tok-punc">},</span></div>
+              <div class="code-line"><span class="ln">9</span>  <span class="tok-fn" data-i18n="code_k_offline">foraDoCodigo</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_offline">"show de rock no estádio"</span><span class="tok-punc">,</span></div>
+              <div class="code-line"><span class="ln">10</span><span class="tok-punc">};</span></div>
             </div>
           </div>
         </div>
