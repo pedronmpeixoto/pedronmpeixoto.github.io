@@ -5,17 +5,21 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Pedro Peixoto | Desenvolvedor de IA & Automação</title>
   <meta name="description" content="Portfólio Profissional de Pedro Peixoto. Bacharel em Direito e Desenvolvedor focado em IA, automações n8n, RPA, aplicações web e Inteligência de Dados.">
-  
+
   <!-- OpenGraph Meta Tags -->
   <meta property="og:title" content="Pedro Peixoto | Desenvolvedor de IA & Automação">
   <meta property="og:description" content="Especialista em automação de processos, integração de LLMs, n8n, RPA e desenvolvimento web.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://pedronmpeixoto.github.io/assets/img/pedro-show.jpg">
 
-  <!-- Fontes (Google Fonts): Schibsted Grotesk para textos e títulos, Spline Sans Mono para detalhes técnicos -->
+  <!-- Marca o documento como "com JS" antes da pintura, para a animação do terminal não piscar -->
+  <script>document.documentElement.classList.add('js');</script>
+
+  <!-- Fonte (Google Fonts): JetBrains Mono em todo o site -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700&family=Spline+Sans+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
 
@@ -23,251 +27,240 @@
 
   <link rel="stylesheet" href="assets/css/styles.css">
 </head>
-<body class="bg-[#FAF9F6] text-[#121212] font-sans antialiased selection:bg-[#121212] selection:text-white min-h-screen flex flex-col relative">
+<body class="bg-[#F6F5F1] text-[#121212] font-mono antialiased min-h-screen flex flex-col relative">
 
   <!-- Acessibilidade: Skip to Content -->
   <a href="#main-content" class="sr-only focus:not-sr-only bg-[#121212] text-white font-medium text-xs rounded-sm shadow-xl transition-all" data-i18n="skip_to_content">
     Pular para o conteúdo
   </a>
 
-  <!-- 1. Header Minimalista Centralizado -->
+  <!-- 1. Header -->
   <header class="sticky top-0 z-50 header-swiss px-6 lg:px-12 py-4 transition-all">
-    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-center gap-5 sm:gap-7 text-center">
-      
-      <!-- Branding -->
-      <a href="#hero" class="brand-name hover:opacity-80 transition-opacity">
-        Pedro Peixoto
+    <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+
+      <a href="#hero" class="brand-name hover:opacity-80 transition-opacity" aria-label="Pedro Peixoto, início">
+        <span class="brand-user">pedro@peixoto</span><span class="brand-path">:~$</span>
       </a>
 
-      <span class="hidden sm:inline-block text-[#D4D4D8] font-light">|</span>
+      <div class="flex flex-wrap items-center gap-5 sm:gap-6">
+        <nav aria-label="Primary" class="flex flex-wrap items-center gap-4 sm:gap-6">
+          <a href="#about" class="nav-link-swiss" data-i18n="nav_about">sobre</a>
+          <a href="#work" class="nav-link-swiss" data-i18n="nav_work">trabalhos</a>
+          <a href="#contact" class="nav-link-swiss" data-i18n="nav_contact">contato</a>
+        </nav>
 
-      <!-- Navegação Focada: Sobre, Trabalhos, Contato -->
-      <nav aria-label="Primary" class="flex flex-wrap items-center justify-center gap-5 sm:gap-6 text-[13.5px]">
-        <a href="#about" class="nav-link-swiss" data-i18n="nav_about">Sobre</a>
-        <a href="#work" class="nav-link-swiss" data-i18n="nav_work">Trabalhos</a>
-        <a href="#contact" class="nav-link-swiss" data-i18n="nav_contact">Contato</a>
-      </nav>
-
-      <span class="hidden sm:inline-block text-[#D4D4D8] font-light">|</span>
-
-      <!-- Seletor de Idioma (PT / EN) -->
-      <button 
-        type="button" 
-        class="lang-toggle-btn font-sans flex items-center gap-1.5 text-[13px] text-[#666666] hover:text-[#111111] transition-colors cursor-pointer"
-        title="Alternar idioma / Toggle language"
-      >
-        <span class="lang-pt font-semibold text-[#121212]">PT</span>
-        <span class="text-[#D4D4D8]">/</span>
-        <span class="lang-en text-[#666666]">EN</span>
-      </button>
+        <!-- Seletor de Idioma (PT / EN) -->
+        <button
+          type="button"
+          class="lang-toggle-btn flex items-center gap-1.5 text-[12px] text-[#6B6B70] hover:text-[#111111] transition-colors cursor-pointer border border-[#E4E4E7] rounded px-2 py-1 bg-white"
+          title="Alternar idioma / Toggle language"
+        >
+          <span class="lang-pt font-semibold text-[#121212]">PT</span>
+          <span class="text-[#D4D4D8]">/</span>
+          <span class="lang-en text-[#6B6B70]">EN</span>
+        </button>
+      </div>
 
     </div>
   </header>
 
-  <!-- Conteúdo Principal -->
   <main id="main-content" class="flex-1">
 
-    <!-- 2. Hero Section Minimalista (100vh de altura no carregamento) -->
-    <section id="hero" class="min-h-[calc(100vh-70px)] flex flex-col justify-between pt-12 pb-0 border-b border-[#E4E4E7]">
+    <!-- 2. Hero: terminal digitando o nome + foto -->
+    <section id="hero" class="min-h-[calc(100vh-62px)] flex flex-col justify-between pt-10 lg:pt-14 pb-0 border-b border-[#E4E4E7]">
       <div class="my-auto px-6 lg:px-12">
-        <div class="max-w-4xl mx-auto space-y-9 text-left">
-          
-          <!-- Título principal: peso 500 com letter-spacing -0.02em -->
-          <h1 class="font-sans text-4xl sm:text-5xl lg:text-[3.375rem] font-medium text-[#121212] leading-[1.1] tracking-[-0.02em]" data-i18n="hero_h1">
-            Pedro Peixoto é Desenvolvedor de IA & Automação na HCLB Advogados
-          </h1>
+        <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
 
-          <!-- Subtítulo (Corpo) -->
-          <p class="text-base sm:text-[1.0625rem] text-[#555555] leading-[1.6] max-w-2xl font-normal" data-i18n="hero_p">
-            Bacharel em Direito e desenvolvedor, focado na construção de aplicações web, automações no n8n e agentes de IA integrados a bancos de dados e LLMs. Histórico de redução de tempo operacional em 90% e 70% na perda de prazos.
-          </p>
+          <div class="lg:col-span-7 space-y-8">
 
-          <!-- Botões de Ação Minimalistas -->
-          <div class="flex flex-wrap items-center gap-3.5 pt-2">
-            <a href="#work" class="btn-swiss-primary px-5 py-3 flex items-center gap-2">
-              <span data-i18n="hero_cta_work">Ver trabalhos</span>
-              <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
-            </a>
+            <!-- Terminal -->
+            <div class="term" role="presentation">
+              <div class="term-bar">
+                <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="term-title">~/pedro — node</span>
+              </div>
+              <div class="term-body">
+                <p class="term-line" aria-hidden="true"><span class="term-prompt">&gt;</span> <span id="type-cmd"><span class="tok-obj">console</span><span class="tok-punc">.</span><span class="tok-fn">log</span><span class="tok-punc">(</span><span class="tok-str">"Pedro Peixoto"</span><span class="tok-punc">)</span></span><span class="caret" id="caret-cmd" hidden></span></p>
+                <h1 class="term-name" aria-label="Pedro Peixoto"><span id="type-out">Pedro Peixoto</span><span class="caret" id="caret-out"></span></h1>
+                <p class="term-line term-dim reveal" data-reveal="1" data-i18n="hero_role">// Desenvolvedor de IA &amp; Automação @ HCLB Advogados</p>
+                <p class="term-line term-dim reveal" data-reveal="2" aria-hidden="true">undefined</p>
+              </div>
+            </div>
 
-            <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
-              <i data-lucide="file-text" class="w-3.5 h-3.5 text-[#555555]"></i>
-              <span data-i18n="hero_cta_cv">Currículo (PDF)</span>
-            </a>
+            <p class="reveal text-[14px] sm:text-[15px] text-[#4B4B4F] leading-[1.75] max-w-2xl" data-reveal="3" data-i18n="hero_p">
+              Bacharel em Direito que virou dev. Construo aplicações web, automações no n8n e agentes de IA ligados a bancos de dados e LLMs. Já reduzi em 90% o tempo operacional e em 70% a perda de prazos.
+            </p>
 
-            <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
-              <i data-lucide="linkedin" class="w-3.5 h-3.5 text-[#555555]"></i>
-              <span data-i18n="hero_cta_resume">Perfil LinkedIn</span>
-            </a>
+            <div class="reveal flex flex-wrap items-center gap-3" data-reveal="4">
+              <a href="#work" class="btn-swiss-primary px-5 py-3 flex items-center gap-2">
+                <span data-i18n="hero_cta_work">ver trabalhos</span>
+                <i data-lucide="arrow-down" class="w-3.5 h-3.5"></i>
+              </a>
+              <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
+                <i data-lucide="file-text" class="w-3.5 h-3.5 text-[#4B4B4F]"></i>
+                <span data-i18n="hero_cta_cv">currículo.pdf</span>
+              </a>
+              <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3 flex items-center gap-2">
+                <svg class="w-3.5 h-3.5 text-[#4B4B4F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+                <span data-i18n="hero_cta_resume">linkedin</span>
+              </a>
+            </div>
           </div>
+
+          <!-- Foto -->
+          <figure class="lg:col-span-5 reveal max-w-sm sm:max-w-md mx-auto lg:max-w-none w-full" data-reveal="2">
+            <div class="photo-frame">
+              <div class="term-bar">
+                <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="term-title">pedro.jpg</span>
+              </div>
+              <img src="assets/img/pedro-show.jpg" alt="Pedro Peixoto sorrindo na arquibancada de um estádio antes de um show do Oasis" width="720" height="900" data-i18n-alt="photo_alt">
+              <figcaption class="photo-caption" data-i18n="photo_caption">// fora do código: show do Oasis, 2025</figcaption>
+            </div>
+          </figure>
 
         </div>
       </div>
 
-      <!-- FAIXA DIVISORA DE PONTA A PONTA COM LOGOS (FULL-BLEED BANNER) -->
-      <div class="w-full border-t border-[#E4E4E7] bg-white py-6 px-6 lg:px-12 mt-12">
+      <!-- Faixa com logos -->
+      <div class="w-full border-t border-[#E4E4E7] bg-white py-6 px-6 lg:px-12 mt-14">
         <div class="max-w-6xl mx-auto flex flex-wrap items-center justify-between gap-8 md:gap-12 opacity-85 hover:opacity-100 transition-opacity duration-300">
-          
-          <!-- HCLB Advogados Logo Oficial SVG -->
           <div class="flex items-center">
             <img src="assets/img/hclb-logo.svg" alt="HCLB Advogados" class="h-9 sm:h-10 w-auto object-contain">
           </div>
-
-          <!-- Singular Facilities -->
-          <div class="flex items-center gap-2 text-xs font-mono font-semibold text-[#121212] tracking-wider uppercase">
-            <i data-lucide="layers" class="w-4 h-4 text-[#555555]"></i>
+          <div class="flex items-center gap-2 text-xs font-semibold text-[#121212] tracking-wider uppercase">
+            <i data-lucide="layers" class="w-4 h-4 text-[#4B4B4F]"></i>
             <span>Singular Facilities</span>
           </div>
-
-          <!-- R. Amaral Advogados -->
-          <div class="flex items-center gap-2 text-xs font-mono font-semibold text-[#121212] tracking-wider uppercase">
-            <i data-lucide="scale" class="w-4 h-4 text-[#555555]"></i>
+          <div class="flex items-center gap-2 text-xs font-semibold text-[#121212] tracking-wider uppercase">
+            <i data-lucide="scale" class="w-4 h-4 text-[#4B4B4F]"></i>
             <span>R. Amaral Advogados</span>
           </div>
-
-          <!-- UNIFOR Logo Oficial SVG -->
           <div class="flex items-center">
             <img src="assets/img/unifor-logo.svg" alt="Universidade de Fortaleza (UNIFOR)" class="h-6 sm:h-7 w-auto object-contain">
           </div>
-
         </div>
       </div>
     </section>
 
-    <!-- 3. Seção "Sobre Mim" -->
-    <section id="about" class="py-28 lg:py-36 px-6 lg:px-12 border-b border-[#E4E4E7]">
-      <div class="max-w-4xl mx-auto space-y-4 text-left">
-        
-        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block" data-i18n="about_label">
-          SOBRE MIM
-        </span>
+    <!-- 3. Sobre -->
+    <section id="about" class="py-24 lg:py-32 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-start">
 
-        <h2 class="font-sans text-3xl lg:text-[2.25rem] font-semibold text-[#121212] leading-[1.2] max-w-3xl tracking-[-0.02em]" data-i18n="about_title">
-          Conectando o Direito à Tecnologia com Inteligência Artificial e Automação de Alta Performance
-        </h2>
+        <div class="lg:col-span-6 space-y-5">
+          <span class="section-label" data-i18n="about_label">// sobre mim</span>
+          <h2 class="text-2xl lg:text-[1.875rem] font-bold text-[#121212] leading-[1.25] tracking-[-0.03em]" data-i18n="about_title">
+            Do Direito para o código, sem largar nenhum dos dois.
+          </h2>
+          <p class="text-[14px] sm:text-[15px] text-[#4B4B4F] leading-[1.75]" data-i18n="about_p">
+            Me formei em Direito e descobri que o que eu mais gostava era resolver os gargalos do dia a dia do escritório. Hoje junto as duas coisas: workflows no n8n, agentes de IA generativa e dados (Power BI e SQL) para tirar do caminho as tarefas repetitivas de quem trabalha com processos.
+          </p>
+        </div>
 
-        <p class="text-base sm:text-[1.0625rem] text-[#555555] leading-[1.6] max-w-3xl pt-2 font-normal" data-i18n="about_p">
-          Atuo no desenvolvimento de soluções tecnológicas estratégicas para o setor jurídico e empresarial. Minha abordagem une a visão analítica do Direito com a eficiência de workflows orquestrados no n8n, agentes de inteligência artificial generativa e inteligência de dados (Power BI e SQL). Construo ferramentas focadas em resolver gargalos operacionais reais e eliminar tarefas repetitivas.
-        </p>
+        <div class="lg:col-span-6">
+          <div class="term">
+            <div class="term-bar">
+              <span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="term-title">pedro.js</span>
+            </div>
+            <div class="term-body code-block" id="about-code" aria-label="Resumo em código">
+              <div class="code-line"><span class="ln">1</span><span class="tok-key">const</span> <span class="tok-obj">pedro</span> <span class="tok-punc">=</span> <span class="tok-punc">{</span></div>
+              <div class="code-line"><span class="ln">2</span>  <span class="tok-fn" data-i18n="code_k_education">formacao</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_education">"Direito (UNIFOR)"</span><span class="tok-punc">,</span></div>
+              <div class="code-line"><span class="ln">3</span>  <span class="tok-fn" data-i18n="code_k_now">hoje</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_now">"IA &amp; Automação @ HCLB Advogados"</span><span class="tok-punc">,</span></div>
+              <div class="code-line"><span class="ln">4</span>  <span class="tok-fn">stack</span><span class="tok-punc">:</span> <span class="tok-punc">[</span><span class="tok-str">"n8n"</span><span class="tok-punc">,</span> <span class="tok-str">"Next.js"</span><span class="tok-punc">,</span> <span class="tok-str">"Python"</span><span class="tok-punc">,</span> <span class="tok-str">"Supabase"</span><span class="tok-punc">,</span> <span class="tok-str">"SQL"</span><span class="tok-punc">,</span> <span class="tok-str">"LLMs"</span><span class="tok-punc">],</span></div>
+              <div class="code-line"><span class="ln">5</span>  <span class="tok-fn" data-i18n="code_k_results">resultados</span><span class="tok-punc">:</span> <span class="tok-punc">{</span> <span class="tok-fn" data-i18n="code_k_time">tempoOperacional</span><span class="tok-punc">:</span> <span class="tok-num">"-90%"</span><span class="tok-punc">,</span> <span class="tok-fn" data-i18n="code_k_deadlines">prazosPerdidos</span><span class="tok-punc">:</span> <span class="tok-num">"-70%"</span> <span class="tok-punc">},</span></div>
+              <div class="code-line"><span class="ln">6</span>  <span class="tok-fn" data-i18n="code_k_offline">foraDoCodigo</span><span class="tok-punc">:</span> <span class="tok-str" data-i18n="code_v_offline">"show de rock no estádio"</span><span class="tok-punc">,</span></div>
+              <div class="code-line"><span class="ln">7</span><span class="tok-punc">};</span></div>
+            </div>
+          </div>
+        </div>
 
       </div>
     </section>
 
-    <!-- 4. Seção de Projetos / Cases (Foco Principal do Portfólio) -->
-    <section id="work" class="py-28 lg:py-36 px-6 lg:px-12 border-b border-[#E4E4E7]">
-      <div class="max-w-4xl mx-auto space-y-12 text-left">
-        
-        <div class="space-y-3">
-          <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block" data-i18n="work_label">
-            PROJETOS SELECIONADOS
-          </span>
-          <h2 class="font-sans text-3xl lg:text-[2.25rem] font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="work_title">
-            Cases & Aplicações em Destaque
+    <!-- 4. Projetos -->
+    <section id="work" class="py-24 lg:py-32 px-6 lg:px-12 border-b border-[#E4E4E7]">
+      <div class="max-w-6xl mx-auto space-y-10 text-left">
+
+        <div class="space-y-4">
+          <span class="section-label" data-i18n="work_label">// projetos selecionados</span>
+          <h2 class="text-2xl lg:text-[1.875rem] font-bold text-[#121212] tracking-[-0.03em]" data-i18n="work_title">
+            Cases &amp; aplicações
           </h2>
-          <p class="text-base text-[#555555] max-w-xl font-normal leading-[1.6]" data-i18n="work_subtitle">
-            Resumos de projetos desenvolvidos. Clique nos botões de ação para acessar o código ou material completo.
+          <p class="text-[14px] sm:text-[15px] text-[#4B4B4F] max-w-2xl leading-[1.75]" data-i18n="work_subtitle">
+            Resumos do que construí. Os botões levam ao código, à demo ou ao case completo.
           </p>
         </div>
 
         <!-- Filtros por Categoria -->
         <div class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          <button 
-            type="button" 
-            data-category="all"
-            class="category-filter-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-[#121212] text-white transition-all cursor-pointer"
-            data-i18n="filter_all"
-          >
-            Todos
-          </button>
-          <button
-            type="button"
-            data-category="n8n"
-            class="category-filter-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-white text-[#555555] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
-            data-i18n="filter_n8n"
-          >
-            Automação & RPA
-          </button>
-          <button 
-            type="button" 
-            data-category="web"
-            class="category-filter-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded-sm text-xs font-mono font-medium bg-white text-[#555555] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
-            data-i18n="filter_web"
-          >
-            Desenvolvimento Web
-          </button>
+          <button type="button" data-category="all"
+            class="category-filter-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded text-xs font-medium bg-[#121212] text-white transition-all cursor-pointer"
+            data-i18n="filter_all">--all</button>
+          <button type="button" data-category="n8n"
+            class="category-filter-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded text-xs font-medium bg-white text-[#4B4B4F] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
+            data-i18n="filter_n8n">--automacao</button>
+          <button type="button" data-category="web"
+            class="category-filter-btn shrink-0 whitespace-nowrap px-3.5 py-1.5 rounded text-xs font-medium bg-white text-[#4B4B4F] border border-[#E4E4E7] hover:text-[#121212] transition-all cursor-pointer"
+            data-i18n="filter_web">--web</button>
         </div>
 
-        <!-- Cards Empilhados Verticalmente -->
-        <div class="space-y-9 pt-2">
-          
-          <!-- Card 1: Gerenciador de Links TRT (Projeto Pessoal) -->
-          <div class="project-case-card card-swiss p-8 lg:p-10" data-categories="web">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
-              <div class="lg:col-span-7 space-y-4">
-                <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_1_role">
-                  Projeto Pessoal • Desenvolvedor Web
-                </span>
+        <div class="space-y-8 pt-2">
 
-                <h3 class="font-sans text-xl lg:text-2xl font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="case_1_h3">
+          <!-- Card 1: Gerenciador de Links TRT -->
+          <article class="project-case-card card-swiss p-7 lg:p-10" data-categories="web">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+              <div class="lg:col-span-7 space-y-4">
+                <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_1_role">Projeto Pessoal • Desenvolvedor Web</span>
+                <h3 class="text-lg lg:text-xl font-bold text-[#121212] tracking-[-0.02em]" data-i18n="case_1_h3">
                   Gerenciador de Links TRT & Autenticação A1 OTP
                 </h3>
-
-                <p class="text-base text-[#555555] leading-[1.6] font-normal" data-i18n="case_1_p">
+                <p class="text-[14px] text-[#4B4B4F] leading-[1.75]" data-i18n="case_1_p">
                   Desenvolvimento de uma aplicação web em Next.js para centralização e acesso rápido aos 24 Tribunais Regionais do Trabalho (TRT 1 ao 24 e TST). Integração de gerador de tokens TOTP/2FA em tempo real (RFC 6238) para autenticação segura com Certificados Digitais A1.
                 </p>
-
-                <!-- Tool Badges -->
                 <div class="flex flex-wrap gap-2 pt-1">
                   <span class="badge-swiss px-2.5 py-0.5">Next.js</span>
                   <span class="badge-swiss px-2.5 py-0.5">JavaScript</span>
                   <span class="badge-swiss px-2.5 py-0.5">TOTP (RFC 6238)</span>
                   <span class="badge-swiss px-2.5 py-0.5">Tailwind CSS</span>
                 </div>
-
                 <div class="pt-3 flex flex-wrap items-center gap-2.5">
-                  <a href="projetos/gerenciador/demo/" target="_blank" rel="noopener" class="btn-swiss-primary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
+                  <a href="projetos/gerenciador/demo/" target="_blank" rel="noopener" class="btn-swiss-primary inline-flex items-center gap-2 px-4 py-2.5">
                     <i data-lucide="play" class="w-3.5 h-3.5"></i>
-                    <span data-i18n="case_1_demo">Abrir demo</span>
+                    <span data-i18n="case_1_demo">abrir demo</span>
                   </a>
-                  <a href="https://github.com/pedronmpeixoto/gerenciador" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
-                    <span data-i18n="case_1_action">Ver no GitHub</span>
-                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#555555]"></i>
+                  <a href="https://github.com/pedronmpeixoto/gerenciador" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary inline-flex items-center gap-2 px-4 py-2.5">
+                    <span data-i18n="case_1_action">ver no github</span>
+                    <i data-lucide="external-link" class="w-3.5 h-3.5 text-[#4B4B4F]"></i>
                   </a>
                 </div>
               </div>
-
-              <!-- Preview Frame -->
-              <div class="lg:col-span-5 flex justify-center">
-                <div class="w-full h-44 rounded-sm bg-[#FAF9F6] border border-[#E4E4E7] flex items-center justify-center p-6 text-center">
-                  <div class="space-y-2">
-                    <i data-lucide="shield-check" class="w-7 h-7 text-[#121212] mx-auto"></i>
-                    <span class="text-xs font-mono text-[#121212] block font-medium">TRT Portal & OTP 2FA</span>
-                    <span class="text-[11px] text-[#666666] font-mono">24 Tribunais + TST</span>
-                  </div>
+              <div class="lg:col-span-5" aria-hidden="true">
+                <div class="preview-term p-5">
+                  <div><span class="term-prompt">$</span> npm run dev</div>
+                  <div class="term-dim">▲ Next.js · ready</div>
+                  <div><span class="tok-fn">tribunais</span><span class="tok-punc">:</span> <span class="tok-num">24</span> <span class="tok-punc">+</span> <span class="tok-str">"TST"</span></div>
+                  <div><span class="tok-fn">totp</span><span class="tok-punc">:</span> <span class="tok-str">"482 913"</span> <span class="term-dim">// 30s</span></div>
+                  <div class="text-[#4ADE80]">✓ autenticado com A1</div>
                 </div>
               </div>
-
             </div>
-          </div>
+          </article>
 
           <!-- Card 2: Automação de Diários (HCLB Advogados) -->
-          <div class="project-case-card card-swiss p-8 lg:p-10" data-categories="n8n">
+          <article class="project-case-card card-swiss p-7 lg:p-10" data-categories="n8n">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
               <div class="lg:col-span-7 space-y-4">
-                <span class="badge-swiss px-3 py-1.5 inline-flex items-center gap-2" data-i18n="case_2_role">
-                  <img src="assets/img/hclb-logo.svg" alt="HCLB Advogados" class="h-3.5 w-auto object-contain">
-                  HCLB Advogados • Desenvolvedor de IA & Automação
+                <span class="badge-swiss px-3 py-1.5 inline-flex items-center gap-2">
+                  <img src="assets/img/hclb-logo.svg" alt="" class="h-3.5 w-auto object-contain">
+                  <span data-i18n="case_2_role">HCLB Advogados • Desenvolvedor de IA & Automação</span>
                 </span>
-
-                <h3 class="font-sans text-xl lg:text-2xl font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="case_2_h3">
+                <h3 class="text-lg lg:text-xl font-bold text-[#121212] tracking-[-0.02em]" data-i18n="case_2_h3">
                   Automação de Diários da Justiça & Cruzamento ERP
                 </h3>
-
-                <p class="text-base text-[#555555] leading-[1.6] font-normal" data-i18n="case_2_p">
+                <p class="text-[14px] text-[#4B4B4F] leading-[1.75]" data-i18n="case_2_p">
                   Workflow no n8n que substituiu a conferência manual, processo por processo, das publicações do DJEN com a base do ERP (Supabase/PostgreSQL). Construído com apoio de IA, roda todo dia às 05:00, tem retentativa e alertas, e conta com uma demo interativa com dados fictícios.
                 </p>
-
                 <div class="flex flex-wrap gap-2 pt-1">
                   <span class="badge-swiss px-2.5 py-0.5">n8n</span>
                   <span class="badge-swiss px-2.5 py-0.5">Supabase</span>
@@ -275,130 +268,99 @@
                   <span class="badge-swiss px-2.5 py-0.5">APIs REST</span>
                   <span class="badge-swiss px-2.5 py-0.5">IA (Claude)</span>
                 </div>
-
                 <div class="pt-3">
-                  <a href="projetos/diarios-djen/index.html" class="btn-swiss-primary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
-                    <span data-i18n="case_2_action">Ver case e demo</span>
+                  <a href="projetos/diarios-djen/index.html" class="btn-swiss-primary inline-flex items-center gap-2 px-4 py-2.5">
+                    <span data-i18n="case_2_action">ver case e demo</span>
                     <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
                   </a>
                 </div>
               </div>
-
-              <!-- Preview Frame -->
-              <div class="lg:col-span-5 flex justify-center">
-                <div class="w-full h-44 rounded-sm bg-[#FAF9F6] border border-[#E4E4E7] flex items-center justify-center p-6 text-center">
-                  <div class="space-y-2">
-                    <i data-lucide="workflow" class="w-7 h-7 text-[#121212] mx-auto"></i>
-                    <span class="text-xs font-mono text-[#121212] block font-medium">Workflow n8n Orchestrator</span>
-                    <span class="text-[11px] text-[#121212] font-mono font-medium">-90% Tempo Operacional</span>
-                  </div>
+              <div class="lg:col-span-5" aria-hidden="true">
+                <div class="preview-term p-5">
+                  <div><span class="term-dim">cron</span> <span class="tok-str">"0 5 * * *"</span></div>
+                  <div><span class="term-prompt">→</span> DJEN <span class="tok-punc">×</span> ERP</div>
+                  <div><span class="tok-fn">retry</span><span class="tok-punc">:</span> <span class="tok-num">true</span></div>
+                  <div><span class="tok-fn">alertas</span><span class="tok-punc">:</span> <span class="tok-num">true</span></div>
+                  <div class="text-[#4ADE80]">✓ -90% tempo operacional</div>
                 </div>
               </div>
-
             </div>
-          </div>
+          </article>
 
-          <!-- Card 4: Automação de GRUs Trabalhistas (Python / Pandas / Banco de Dados) -->
-          <div class="project-case-card card-swiss p-8 lg:p-10" data-categories="n8n automation python">
+          <!-- Card 3: Automação de GRUs Trabalhistas -->
+          <article class="project-case-card card-swiss p-7 lg:p-10" data-categories="n8n automation python">
             <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-              
               <div class="lg:col-span-7 space-y-4">
-                <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_4_role">
-                  Automação & RPA • Desenvolvedor Python
-                </span>
-
-                <h3 class="font-sans text-xl lg:text-2xl font-semibold text-[#121212] tracking-[-0.02em]" data-i18n="case_4_h3">
+                <span class="badge-swiss px-3 py-1.5 inline-block" data-i18n="case_4_role">Automação & RPA • Desenvolvedor Python</span>
+                <h3 class="text-lg lg:text-xl font-bold text-[#121212] tracking-[-0.02em]" data-i18n="case_4_h3">
                   Emissão Automatizada de GRUs Trabalhistas
                 </h3>
-
-                <p class="text-base text-[#555555] leading-[1.6] font-normal" data-i18n="case_4_p">
+                <p class="text-[14px] text-[#4B4B4F] leading-[1.75]" data-i18n="case_4_p">
                   Desenvolvimento de solução em Python, Pandas e banco de dados para emissão automatizada de Guias de Recolhimento da União (GRUs) da Justiça do Trabalho. A ferramenta extraía e preenchia todos os dados necessários inserindo apenas o número do processo (desenvolvido para o portal antigo, atualmente descontinuado).
                 </p>
-
-                <!-- Tool Badges -->
                 <div class="flex flex-wrap gap-2 pt-1">
                   <span class="badge-swiss px-2.5 py-0.5">Python</span>
                   <span class="badge-swiss px-2.5 py-0.5">Pandas</span>
                   <span class="badge-swiss px-2.5 py-0.5">SQL / Banco de Dados</span>
                   <span class="badge-swiss px-2.5 py-0.5">RPA / Web Automation</span>
                 </div>
-
                 <div class="pt-3">
-                  <span class="btn-swiss-secondary inline-flex items-center gap-2 px-4 py-2.5 text-xs">
-                    <span data-i18n="case_4_action">Sistema Descontinuado</span>
-                    <i data-lucide="archive" class="w-3.5 h-3.5 text-[#555555]"></i>
+                  <span class="btn-swiss-secondary inline-flex items-center gap-2 px-4 py-2.5">
+                    <span data-i18n="case_4_action">sistema descontinuado</span>
+                    <i data-lucide="archive" class="w-3.5 h-3.5 text-[#4B4B4F]"></i>
                   </span>
                 </div>
               </div>
-
-              <!-- Preview Frame -->
-              <div class="lg:col-span-5 flex justify-center">
-                <div class="w-full h-44 rounded-sm bg-[#FAF9F6] border border-[#E4E4E7] flex items-center justify-center p-6 text-center">
-                  <div class="space-y-2">
-                    <i data-lucide="file-spreadsheet" class="w-7 h-7 text-[#121212] mx-auto"></i>
-                    <span class="text-xs font-mono text-[#121212] block font-medium">GRU Labor Automation</span>
-                    <span class="text-[11px] text-[#666666] font-mono">Python • Pandas • Database</span>
-                  </div>
+              <div class="lg:col-span-5" aria-hidden="true">
+                <div class="preview-term p-5">
+                  <div><span class="term-prompt">$</span> python gru.py <span class="tok-str">--processo</span></div>
+                  <div><span class="tok-key">import</span> pandas <span class="tok-key">as</span> pd</div>
+                  <div class="term-dim"># dados preenchidos a partir</div>
+                  <div class="term-dim"># do número do processo</div>
+                  <div class="text-[#FCD34D]">⚠ portal antigo · arquivado</div>
                 </div>
               </div>
-
             </div>
-          </div>
+          </article>
 
         </div>
-
       </div>
     </section>
 
-    <!-- 5. Seção de Contato -->
-    <section id="contact" class="py-28 lg:py-36 px-6 lg:px-12">
-      <div class="max-w-4xl mx-auto space-y-8 text-left">
-        
-        <span class="text-[11px] font-mono font-medium uppercase tracking-widest text-[#666666] block" data-i18n="contact_label">
-          CONTATO
-        </span>
-
-        <h2 class="font-sans text-3xl sm:text-4xl lg:text-[2.75rem] font-semibold text-[#121212] tracking-[-0.02em] max-w-2xl leading-tight" data-i18n="contact_title">
+    <!-- 5. Contato -->
+    <section id="contact" class="py-24 lg:py-32 px-6 lg:px-12">
+      <div class="max-w-6xl mx-auto space-y-8 text-left">
+        <span class="section-label" data-i18n="contact_label">// contato</span>
+        <h2 class="text-2xl sm:text-3xl lg:text-[2.25rem] font-bold text-[#121212] tracking-[-0.03em] max-w-3xl leading-tight" data-i18n="contact_title">
           Vamos conversar sobre o seu próximo projeto?
         </h2>
-
-        <!-- Links de Ação Minimalistas -->
-        <div class="flex flex-wrap items-center gap-3.5 pt-2">
-          <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-primary px-5 py-3.5 flex items-center gap-2.5">
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-            <span data-i18n="contact_link_cv">Currículo (PDF)</span>
+        <div class="flex flex-wrap items-center gap-3 pt-2">
+          <a href="mailto:pedroiran1996@gmail.com" class="btn-swiss-primary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            <span data-i18n="contact_link_email">enviar e-mail</span>
           </a>
-
           <a href="https://www.linkedin.com/in/pedronpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
-            <i data-lucide="linkedin" class="w-4 h-4 text-[#555555]"></i>
-            <span data-i18n="contact_link_linkedin">Perfil no LinkedIn</span>
+            <svg class="w-4 h-4 text-[#4B4B4F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+            <span data-i18n="contact_link_linkedin">linkedin</span>
           </a>
-
           <a href="https://github.com/pedronmpeixoto" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
-            <i data-lucide="github" class="w-4 h-4 text-[#555555]"></i>
-            <span data-i18n="contact_link_github">Perfil no GitHub</span>
+            <svg class="w-4 h-4 text-[#4B4B4F]" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .3a12 12 0 0 0-3.8 23.38c.6.12.83-.26.83-.57v-2.05c-3.34.73-4.04-1.6-4.04-1.6-.55-1.4-1.34-1.77-1.34-1.77-1.08-.74.09-.73.09-.73 1.2.09 1.83 1.24 1.83 1.24 1.07 1.83 2.8 1.3 3.49 1 .1-.78.42-1.3.76-1.6-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.14-.3-.54-1.52.1-3.18 0 0 1-.32 3.3 1.23a11.5 11.5 0 0 1 6 0c2.28-1.55 3.29-1.23 3.29-1.23.64 1.66.24 2.88.12 3.18a4.65 4.65 0 0 1 1.23 3.22c0 4.61-2.8 5.63-5.48 5.92.42.36.81 1.1.81 2.22v3.29c0 .32.21.69.82.57A12 12 0 0 0 12 .3"/></svg>
+            <span data-i18n="contact_link_github">github</span>
           </a>
-
-          <a href="mailto:pedroiran1996@gmail.com" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
-            <i data-lucide="mail" class="w-3.5 h-3.5 text-[#555555]"></i>
-            <span data-i18n="contact_link_email">Enviar E-mail</span>
+          <a href="curriculo-pedro-peixoto.pdf" target="_blank" rel="noopener noreferrer" class="btn-swiss-secondary px-5 py-3.5 flex items-center gap-2.5">
+            <i data-lucide="file-text" class="w-4 h-4 text-[#4B4B4F]"></i>
+            <span data-i18n="contact_link_cv">currículo.pdf</span>
           </a>
         </div>
-
       </div>
     </section>
 
   </main>
 
-  <!-- Linha Final com Nome e Copyright -->
-  <footer class="py-8 px-6 border-t border-[#E4E4E7] text-xs text-[#666666]">
-    <div class="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
-      <p id="copyright-year" data-i18n="copyright_text">
-        © 2026 Pedro Peixoto. Todos os direitos reservados.
-      </p>
-      <p class="font-mono text-[#666666]">
-        Pedro Peixoto • Desenvolvedor de IA & Automação
-      </p>
+  <footer class="py-8 px-6 lg:px-12 border-t border-[#E4E4E7] text-xs text-[#6B6B70]">
+    <div class="max-w-6xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p id="copyright-year" data-i18n="copyright_text">© 2026 Pedro Peixoto. Todos os direitos reservados.</p>
+      <p><span class="text-[#15803D]">$</span> <span data-i18n="footer_built">feito à mão, linha por linha</span><span class="caret" style="background:#15803D;height:1em;width:.5em"></span></p>
     </div>
   </footer>
 

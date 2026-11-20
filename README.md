@@ -10,7 +10,7 @@ Este é o repositório do portfólio profissional de **Pedro Peixoto**, publicad
 
 ## 🛠️ Tecnologias & Destaques
 
-- **HTML5 Semântico & Tailwind CSS (Play CDN)**: layout minimalista em estilo suíço, com Schibsted Grotesk e Spline Sans Mono (Google Fonts).
+- **HTML5 Semântico & Tailwind CSS (Play CDN)**: visual de terminal, com JetBrains Mono (Google Fonts) e intro animada que digita `console.log("Pedro Peixoto")`.
 - **Ícones**: [Lucide Icons](https://lucide.dev/).
 - **Bilíngue**: alternância PT/EN feita em JavaScript puro, sem dependências.
 - **Projetos em Destaque**:

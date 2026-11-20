@@ -8,11 +8,11 @@ if (window.tailwind) {
     theme: {
       extend: {
         fontFamily: {
-          sans: ['"Schibsted Grotesk"', 'system-ui', 'sans-serif'],
-          mono: ['"Spline Sans Mono"', 'ui-monospace', 'monospace'],
+          sans: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
+          mono: ['"JetBrains Mono"', 'ui-monospace', 'SFMono-Regular', 'Menlo', 'monospace'],
         },
         colors: {
-          paper: '#FAF9F6',
+          paper: '#F6F5F1',
           ink: '#121212',
           subtle: '#555555',
           muted: '#666666',
