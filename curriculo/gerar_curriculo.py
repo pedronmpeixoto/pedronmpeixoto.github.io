@@ -83,8 +83,8 @@ CONTEUDO = {
                     "Supabase (PostgreSQL) e cruza as duas fontes. O tempo da conferência caiu 90%.",
                     "Fluxo que coloca na frente da fila as publicações trabalhistas com prazo "
                     "mais curto.",
-                    "Agentes de IA que geram contratos e documentos padronizados, o que reduziu o "
-                    "número de assinaturas de LLM no escritório.",
+                    "Agente de IA que cadastra no ERP o andamento das publicações que o sistema "
+                    "não captou.",
                     "Aplicação web de gestão de projetos com React, JavaScript e banco de dados.",
                     "Integrações com APIs REST, Gmail e Microsoft 365.",
                 ],
@@ -208,8 +208,8 @@ CONTEUDO = {
                     "cross-checks both sources. The time spent on this check dropped 90%.",
                     "Workflow that puts labor court publications with the shortest deadlines at "
                     "the front of the queue.",
-                    "AI agents that generate standard contracts and documents, which reduced the "
-                    "number of LLM subscriptions at the firm.",
+                    "AI agent that records in the ERP the case updates from publications the "
+                    "system missed.",
                     "Project management web application built with React, JavaScript and a "
                     "database.",
                     "Integrations with REST APIs, Gmail and Microsoft 365.",
